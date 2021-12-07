@@ -21,12 +21,12 @@ namespace _20211207_ToDoList.Services
         public void Add(ToDo toDo)
         {
             _toDoList.Add(toDo);
-            System.IO.File.AppendAllText("c:/tmp/ToDoList.txt", JsonSerializer.Serialize(toDo) + "\r\n");
+            System.IO.File.AppendAllText(_filePath, JsonSerializer.Serialize(toDo) + "\r\n");
         }
 
         public void ReadFileContents()
         {
-            foreach (string line in System.IO.File.ReadLines(@"c:/tmp/ToDoList.txt"))
+            foreach (string line in System.IO.File.ReadLines(_filePath))
             {
                 if (!line.Equals(""))
                 {
