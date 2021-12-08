@@ -1,6 +1,8 @@
 ﻿using _20211207_ToDoList.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
+using static System.Net.WebRequestMethods;
 
 namespace _20211207_ToDoList.Services
 {
@@ -20,19 +22,28 @@ namespace _20211207_ToDoList.Services
 
         public void Add(ToDo toDo)
         {
+            //ToDo toDo1 = new ToDo() { Name = toDo.Name, Description};
             _toDoList.Add(toDo);
-            System.IO.File.AppendAllText(_filePath, JsonSerializer.Serialize(toDo) + "\r\n");
+            System.IO.File.WriteAllText(_filePath, JsonSerializer.Serialize(_toDoList));
+        }
+
+        public void Remove(int id)
+        {
+            ToDo toDo = _toDoList.FirstOrDefault(x => x.Id == id);
+            if(toDo != null)
+            {
+                _toDoList.Remove(toDo);
+                System.IO.File.WriteAllText(_filePath, JsonSerializer.Serialize(_toDoList));
+            }
+            
         }
 
         public void ReadFileContents()
         {
-            foreach (string line in System.IO.File.ReadLines(_filePath))
+            _toDoList = JsonSerializer.Deserialize <List<ToDo>>(System.IO.File.ReadAllText(_filePath));
+            if (_toDoList.Any())
             {
-                if (!line.Equals(""))
-                {
-                    ToDo toDo = JsonSerializer.Deserialize<ToDo>(line);
-                    _toDoList.Add(toDo);
-                }
+                ToDo.IdCounter = _toDoList.Max(x => x.Id);
             }
         }
     }

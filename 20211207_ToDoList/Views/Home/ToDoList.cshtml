@@ -9,11 +9,11 @@
 @if (@Model.Any())
 {
         <table class="table">
-            <thead><th scope="col">Name</th><th scope="col">Description</th></thead>
+            <thead><th scope="col">Id</th><th scope="col">Name</th><th scope="col">Description</th><th scope="col">Actions</th></thead>
         @foreach(ToDo todo in @Model)
         {
-            <tr>
-            <td>@todo.Name</td><td>@todo.Description</td>
+            <tr scope="row">
+            <td scope="col">@todo.Id</td><td scope="col">@todo.Name</td><td scope="col">@todo.Description</td><td><a href="/Home/Delete/@todo.Id">Trinti</a></td>
             </tr>
         }
         </table>

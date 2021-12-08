@@ -43,10 +43,23 @@ namespace _20211207_ToDoList.Controllers
                 return View(model);
             } else
             {
-                _todolistService.Add(model);
+                ToDo toDo = new ToDo() { Name = model.Name, Description = model.Description, Id = ++ToDo.IdCounter };
+                _todolistService.Add(toDo);
                 return RedirectToAction("ToDoList");
             }
             
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null) { return RedirectToAction("HttpNotFound"); }
+            _todolistService.Remove((int)id);
+            return RedirectToAction("ToDoList");
+        }
+
+        public ActionResult HttpNotFound()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
