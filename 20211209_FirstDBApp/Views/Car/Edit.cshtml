@@ -1,0 +1,19 @@
+﻿@model CarModel
+
+@using (Html.BeginForm("Edit", "Car", FormMethod.Post))
+{
+    
+    @Html.HiddenFor(a => a.CarId)
+
+    @Html.LabelFor(a => a.Model)
+    @Html.TextBoxFor(a => a.Model)
+    @Html.ValidationMessageFor(a => a.Model)
+
+    @Html.LabelFor(a => a.Year)
+    @Html.TextBoxFor(a => a.Year)
+
+    @Html.LabelFor(a => a.Color)
+    @Html.TextBoxFor(a => a.Color)
+        
+    <input type="submit" value="Submit"/>
+}

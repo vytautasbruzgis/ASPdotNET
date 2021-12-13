@@ -1,0 +1,41 @@
+﻿@model CarWithPartsModel
+ 
+@Html.HiddenFor(a => a.Car.CarId)
+
+@Html.LabelFor(a => a.Car.Model)
+@Html.TextBoxFor(a => a.Car.Model, new { @readonly="readonly" })
+@Html.ValidationMessageFor(a => a.Car.Model)
+
+@Html.LabelFor(a => a.Car.Year)
+@Html.TextBoxFor(a => a.Car.Year, new { @readonly="readonly" })
+
+@Html.LabelFor(a => a.Car.Color)
+@Html.TextBoxFor(a => a.Car.Color, new { @readonly="readonly" })
+
+@if (@Model.Parts.Any())
+{
+    <h3>This car has these parts:</h3>
+    <table class="table">
+        <thead><th scope="col">CarPartId</th><th scope="col">Name</th><th scope="col">Manufacturer</th><th scope="col">Actions</th></thead>
+        @foreach(CarPartModel carPart in @Model.Parts)
+        {
+            <tr scope="row">
+            <td scope="col">@carPart.Id</td><td scope="col">@carPart.Name</td><td scope="col">@carPart.Manufacturer</td>
+            <td>
+                <a href="/Car/Edit/@carPart.Id">Edit</a>
+                <a href="/Car/Delete/@carPart.Id">Delete</a>
+            </td>
+            </tr>
+        }
+        </table>
+    <a href="/CarPart/Create/@Model.Car.CarId">Add new</a>
+} else
+{
+    <h3>This car has no parts.</h3>
+}
+
+@*
+@using (Html.BeginForm("Edit", "Car", FormMethod.Post))
+{      
+    <input type="submit" value="Submit"/>
+}*@

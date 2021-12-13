@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20211207_ToDoList", "20211207_ToDoList\20211207_ToDoList.csproj", "{A37D1ADD-6DD4-4551-8E9B-A8035C743348}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20211209_FirstDBApp", "20211209_FirstDBApp\20211209_FirstDBApp.csproj", "{03011789-D85F-4BC6-863C-A7631CA2E762}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A37D1ADD-6DD4-4551-8E9B-A8035C743348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A37D1ADD-6DD4-4551-8E9B-A8035C743348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A37D1ADD-6DD4-4551-8E9B-A8035C743348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03011789-D85F-4BC6-863C-A7631CA2E762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03011789-D85F-4BC6-863C-A7631CA2E762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03011789-D85F-4BC6-863C-A7631CA2E762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03011789-D85F-4BC6-863C-A7631CA2E762}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
