@@ -1,0 +1,15 @@
+﻿@model CarPartModel
+
+@using (Html.BeginForm("Edit", "CarPart", FormMethod.Post))
+{
+    @Html.HiddenFor(a => a.Id)
+    @Html.HiddenFor(a => a.CarId)
+
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+
+    @Html.LabelFor(a => a.Manufacturer)
+    @Html.TextBoxFor(a => a.Manufacturer)
+
+    <input type="submit" value="Submit"/>
+}

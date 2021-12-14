@@ -33,5 +33,20 @@ namespace _20211209_FirstDBApp.Controllers
             return RedirectToAction("Details", "Car", new { id = carId});
         }
 
+        public IActionResult Edit(int id, int carId)
+        {
+            var carPart = _carPartsService.GetPartById(id);
+            if (carPart == null)
+            {
+                return RedirectToAction("Details", "Car", new { id = carId });
+            }
+            return View(carPart);
+        }
+        [HttpPost]
+        public IActionResult Edit(CarPartModel carPart)
+        {
+            _carPartsService.Update(carPart);
+            return RedirectToAction("Details", "Car", new { id = carPart.CarId });
+        }
     }
 }

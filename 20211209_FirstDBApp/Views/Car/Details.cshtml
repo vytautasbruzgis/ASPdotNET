@@ -22,7 +22,7 @@
             <tr scope="row">
             <td scope="col">@carPart.Id</td><td scope="col">@carPart.Name</td><td scope="col">@carPart.Manufacturer</td>
             <td>
-                <!--<a href="/Car/Edit/@carPart.Id">Edit</a>-->
+                <a href="/CarPart/Edit/@carPart.Id?carId=@carPart.CarId">Edit</a>
                 <a href="/CarPart/Delete/@carPart.Id?carId=@carPart.CarId">Delete</a>
             </td>
             </tr>

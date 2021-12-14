@@ -67,10 +67,34 @@ namespace _20211209_FirstDBApp.Services
             _carParts = _carParts.Where(x => x.Id != id).ToList();
         }
 
-        public int GetCarId(int id)
+        public void Update(CarPartModel carPart)
         {
-            var carPart = _carParts.FirstOrDefault(x => x.Id == id);
-            return carPart.CarId;
+            var tmp = GetPartById(carPart.Id);
+            if (tmp != null)
+            {
+                _connection.Open();
+                string sql = $"UPDATE CarParts SET Name='{carPart.Name}', Manufacturer = '{carPart.Manufacturer}' WHERE CarPartId = {carPart.Id}";
+                using SqlCommand command = new SqlCommand(sql, _connection);
+                command.ExecuteScalar();
+                _connection.Close();
+            }
+        }
+
+        public CarPartModel GetPartById(int id)
+        {
+            _connection.Open();
+            using var command = new SqlCommand($"SELECT CarPartId, CarId, Name, Manufacturer FROM CarParts WHERE CarPartId = {id}", _connection);
+            using var reader = command.ExecuteReader();
+            reader.Read();
+            var carPart = new CarPartModel()
+            {
+                Id = reader.GetInt32(0),
+                CarId = reader.GetInt32(1),
+                Name = reader.GetString(2),
+                Manufacturer = reader.GetValue(3).ToString()
+            };
+            _connection.Close();
+            return carPart;
         }
 
     }
