@@ -16,8 +16,21 @@ namespace _20211209_FirstDBApp.Controllers
 
         public IActionResult Create(int Id)
         {
-            CarPartAddModel m = new CarPartAddModel() { CarId = Id };
+            CarPartModel m = new CarPartModel() { CarId = Id };
             return View(m);
+        }
+        [HttpPost]
+        public IActionResult Create(CarPartModel model)
+        {
+            _carPartsService.Create(model);
+            return RedirectToAction("Details", "Car", new { id = model.CarId });
+        }
+
+        public IActionResult Delete(int id, int carId)
+        {
+            
+            _carPartsService.Delete(id);
+            return RedirectToAction("Details", "Car", new { id = carId});
         }
 
     }

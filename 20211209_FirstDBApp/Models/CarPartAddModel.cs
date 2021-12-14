@@ -3,5 +3,6 @@
     public class CarPartAddModel
     {
         public int CarId { get; set; }
+        public CarPartModel Part { get; set; }
     }
 }

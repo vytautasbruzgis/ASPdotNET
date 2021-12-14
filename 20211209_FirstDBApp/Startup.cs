@@ -26,8 +26,8 @@ namespace _20211209_FirstDBApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<SqlConnection>(_ => new SqlConnection(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddSingleton<CarsService>();
-            services.AddSingleton<CarPartsService>();//
+            services.AddTransient<CarsService>();
+            services.AddTransient<CarPartsService>();//
             services.AddControllersWithViews();
         }
 

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace _20211209_FirstDBApp.Services
 {
@@ -38,9 +39,39 @@ namespace _20211209_FirstDBApp.Services
             return _carParts;
         }
 
+        public void Create(CarPartModel carPart)
+        {
+            _connection.Open();
+            string sql = "INSERT INTO CarParts (CarId, Name, Manufacturer) OUTPUT INSERTED.CarPartId Values (" + carPart.CarId + ", '" + carPart.Name + "', '" + carPart.Manufacturer + "')";
+            using var command = new SqlCommand(sql, _connection);
+
+            int newId = (int)command.ExecuteScalar();
+            _carParts.Add(new CarPartModel()
+            {
+                Id = newId,
+                CarId = carPart.CarId,
+                Name = carPart.Name,
+                Manufacturer = carPart.Manufacturer
+            });
+
+            _connection.Close();
+        }
+
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _connection.Open();
+            string sql = $"DELETE FROM CarParts WHERE CarPartId = {id}";
+            using SqlCommand command = new SqlCommand(sql, _connection);
+            command.ExecuteScalar();
+            _connection.Close();
+            _carParts = _carParts.Where(x => x.Id != id).ToList();
         }
+
+        public int GetCarId(int id)
+        {
+            var carPart = _carParts.FirstOrDefault(x => x.Id == id);
+            return carPart.CarId;
+        }
+
     }
 }
