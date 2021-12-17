@@ -1,0 +1,23 @@
+﻿@model List<ToDoModel>
+
+
+    <h3>Car list</h3>
+
+
+@if (@Model.Any())
+{
+        <table class="table">
+            <thead><th scope="col">CarId</th><th scope="col">Model</th><th scope="col">Year</th><th scope="col">Color</th><th scope="col">Actions</th></thead>
+        @foreach(ToDoModel todo in @Model)
+        {
+            <tr scope="row">
+            <td scope="col">@todo.Id</td><td scope="col">@todo.Name</td><td scope="col">@todo.ToDoUntil</td><td scope="col">@todo.Category.Name</td>
+            <td>
+                <a href="/Car/Edit/@todo.Id">Edit</a>
+            </td>
+            </tr>
+        }
+        </table>
+} else{
+        <h4>List is empty</h4>
+    }

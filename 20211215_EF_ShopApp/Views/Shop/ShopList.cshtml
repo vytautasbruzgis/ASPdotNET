@@ -1,0 +1,23 @@
+﻿@model List<ShopModel>
+<h3>Shop list</h3>
+<br/>
+
+@if (@Model.Any())
+{
+        <table class="table">
+            <thead><th scope="col">Shop Id</th><th scope="col">Name</th><th scope="col">Actions</th></thead>
+        @foreach(var shop in @Model)
+        {
+            <tr scope="row">
+            <td scope="col">@shop.Id</td><td scope="col">@shop.Name</td>
+            <td>
+                <a href="/Shop/Details/@shop.Id">Details</a>
+            </td>
+            </tr>
+        }
+        </table>
+} else {
+        <h4>List is empty</h4>
+}
+<br />
+<a href="/Shop/Create">Add new</a>

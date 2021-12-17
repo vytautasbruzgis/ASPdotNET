@@ -1,0 +1,23 @@
+﻿@model List<ShopItemModel>
+<h3>Shop item list</h3>
+<br/>
+
+@if (@Model.Any())
+{
+        <table class="table">
+            <thead><th scope="col">Item Id</th><th scope="col">Name</th><th scope="col">Expiry date</th><th scope="col">Shop name</th><th scope="col">Actions</th></thead>
+        @foreach(var shopItem in @Model)
+        {
+            <tr scope="row">
+            <td scope="col">@shopItem.Id</td><td scope="col">@shopItem.Name</td><td scope="col">@shopItem.ExpiryDate</td><td scope="col">@shopItem.Shop.Name</td>
+            <td>
+                <a href="/Car/Edit/@shopItem.Id">Edit</a>
+                <a href="/Car/Delete/@shopItem.Id">Delete</a>
+                <a href="/Car/Details/@shopItem.Id">Details</a>
+            </td>
+            </tr>
+        }
+        </table>
+} else{
+        <h4>List is empty</h4>
+    }
