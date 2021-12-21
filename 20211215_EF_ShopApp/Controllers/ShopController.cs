@@ -1,10 +1,6 @@
 ﻿using _20211215_EF_ShopApp.Models;
 using _20211215_EF_ShopApp.Services;
-using _20211215_FirstEFApp.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace _20211215_EF_ShopApp.Controllers
 {
@@ -18,39 +14,55 @@ namespace _20211215_EF_ShopApp.Controllers
             _shopItemService = shopItemService; 
         }
         public IActionResult Index()
-
         {
-            //var shopItems = _dataContext.ShopItems.Include(c => c.Shop).Where(c => c.ShopId == 1).ToList();
-            var shopItems = _shopItemService.GetAllNotDeleted();
-            return View(shopItems);
+            return RedirectToAction("ItemList", "ShopItem");
         }
-
         public IActionResult ShopList()
         {
             return View(_shopService.GetAllNotDeleted());
         }
-
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var shop = _shopService.GetById(id);
+            shop.ShopItems = _shopItemService.GetShopItems(shop.Id);
+            return View(shop);
         }
-
         public IActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
-        public IActionResult Create(ShopModel m)
+        public IActionResult Create(ShopModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(m);
+                return View(model);
             } else
             {
-                _shopService.Add(m);
+                _shopService.Add(model);
                 return RedirectToAction("ShopList");
             }
+        }
+        public IActionResult Delete(int id)
+        {
+            _shopService.Delete(id);
+            return RedirectToAction("ShopList");
+        }
+
+        public IActionResult Update(int id)
+        {
+            ShopModel shop = _shopService.GetById(id);
+            return View(shop);
+        }
+        [HttpPost]
+        public IActionResult Update(ShopModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            _shopService.Update(model);
+            return RedirectToAction("ShopList");
         }
     }
 }

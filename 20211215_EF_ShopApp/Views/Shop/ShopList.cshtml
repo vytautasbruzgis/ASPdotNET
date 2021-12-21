@@ -12,6 +12,8 @@
             <td scope="col">@shop.Id</td><td scope="col">@shop.Name</td>
             <td>
                 <a href="/Shop/Details/@shop.Id">Details</a>
+                @Html.ActionLink("Update", "Update", "Shop", new { Id = @shop.Id}, null)
+                @Html.ActionLink("Delete", "Delete", "Shop", new { Id = @shop.Id}, null)
             </td>
             </tr>
         }

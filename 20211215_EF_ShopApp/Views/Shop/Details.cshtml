@@ -1,0 +1,22 @@
+﻿@model ShopModel
+<h3>Shop "@Model.Name" item list: </h3>
+@if (@Model.ShopItems.Any())
+{
+        <table class="table">
+            <thead><th scope="col">Shop Id</th><th scope="col">Name</th><th scope="col">Expiry date</th><th scope="col">Actions</th></thead>
+        @foreach(var shopItem in @Model.ShopItems)
+        {
+            <tr scope="row">
+            <td scope="col">@shopItem.Id</td><td scope="col">@shopItem.Name</td><td scope="col">@shopItem.ExpiryDate</td>
+            <td>
+                @Html.ActionLink("Update", "Update", "ShopItem", new { Id = @shopItem.Id}, null)
+                @Html.ActionLink("Delete", "Delete", "ShopItem", new { Id = @shopItem.Id}, null)
+            </td>
+            </tr>
+        }
+        </table>
+} else {
+        <h4>List is empty</h4>
+}
+<br />
+@Html.ActionLink("Add new item", "Create", "ShopItem", new { shopId = @Model.Id}, null)

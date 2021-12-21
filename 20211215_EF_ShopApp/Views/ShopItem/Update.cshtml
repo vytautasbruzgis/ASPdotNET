@@ -1,0 +1,18 @@
+﻿@model ShopItemWithShopListModel
+
+using (@Html.BeginForm("Update", "ShopItem", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    @Html.ValidationMessageFor(a => a.Name)
+    <br />
+    @Html.LabelFor(a => a.ExpiryDate)
+    @Html.TextBoxFor(a => a.ExpiryDate)
+    @Html.ValidationMessageFor(a => a.ExpiryDate)
+    <br />
+
+    @Html.LabelFor(a => a.ShopId)
+    @Html.DropDownListFor(a => a.ShopId, new SelectList(Model.ShopList, "Id", "Name"), "", new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.ShopId)
+    <br />   
+    <input type="submit" value="Submit"/>
