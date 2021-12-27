@@ -30,6 +30,8 @@ namespace _20211215_EF_ShopApp
             services.AddDbContext<DataContext>(x => x.UseSqlServer(defaultConnection));
             services.AddTransient<ShopService>();
             services.AddTransient<ShopItemService>();
+            services.AddTransient<TagService>();
+            services.AddTransient<ItemTagService>();
             services.AddControllersWithViews();
         }
 

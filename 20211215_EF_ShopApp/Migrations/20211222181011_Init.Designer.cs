@@ -10,8 +10,8 @@ using _20211215_FirstEFApp.Data;
 namespace _20211215_EF_ShopApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211216174600_Data")]
-    partial class Data
+    [Migration("20211222181011_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace _20211215_EF_ShopApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("_20211215_EF_ShopApp.Models.ItemTagModel", b =>
+                {
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShopItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TagId", "ShopItemId");
+
+                    b.HasIndex("ShopItemId");
+
+                    b.ToTable("ItemTags");
+                });
 
             modelBuilder.Entity("_20211215_EF_ShopApp.Models.ShopItemModel", b =>
                 {
@@ -34,10 +49,11 @@ namespace _20211215_EF_ShopApp.Migrations
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ShopId")
@@ -53,45 +69,45 @@ namespace _20211215_EF_ShopApp.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 776, DateTimeKind.Utc).AddTicks(1904),
-                            ExpiryDate = new DateTime(2021, 12, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 542, DateTimeKind.Utc).AddTicks(8339),
+                            ExpiryDate = new DateTime(2021, 12, 22, 0, 0, 0, 0, DateTimeKind.Local),
+                            IsDeleted = false,
                             Name = "Item 1",
                             ShopId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 777, DateTimeKind.Utc).AddTicks(8521),
-                            ExpiryDate = new DateTime(2021, 12, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 544, DateTimeKind.Utc).AddTicks(5636),
+                            ExpiryDate = new DateTime(2021, 12, 22, 0, 0, 0, 0, DateTimeKind.Local),
+                            IsDeleted = false,
                             Name = "Item 2",
                             ShopId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 777, DateTimeKind.Utc).AddTicks(8550),
-                            ExpiryDate = new DateTime(2021, 12, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 544, DateTimeKind.Utc).AddTicks(5664),
+                            ExpiryDate = new DateTime(2021, 12, 22, 0, 0, 0, 0, DateTimeKind.Local),
+                            IsDeleted = false,
                             Name = "Item 3",
                             ShopId = 2
                         },
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 777, DateTimeKind.Utc).AddTicks(8554),
-                            ExpiryDate = new DateTime(2021, 12, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 544, DateTimeKind.Utc).AddTicks(5669),
+                            ExpiryDate = new DateTime(2021, 12, 22, 0, 0, 0, 0, DateTimeKind.Local),
+                            IsDeleted = false,
                             Name = "Item 4",
                             ShopId = 1
                         },
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 777, DateTimeKind.Utc).AddTicks(8557),
-                            ExpiryDate = new DateTime(2021, 12, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 544, DateTimeKind.Utc).AddTicks(5672),
+                            ExpiryDate = new DateTime(2021, 12, 22, 0, 0, 0, 0, DateTimeKind.Local),
+                            IsDeleted = false,
                             Name = "Item 5",
                             ShopId = 1
                         });
@@ -107,10 +123,11 @@ namespace _20211215_EF_ShopApp.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -121,24 +138,65 @@ namespace _20211215_EF_ShopApp.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 775, DateTimeKind.Utc).AddTicks(3091),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 542, DateTimeKind.Utc).AddTicks(601),
+                            IsDeleted = false,
                             Name = "Shop 1"
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 775, DateTimeKind.Utc).AddTicks(3589),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 542, DateTimeKind.Utc).AddTicks(1120),
+                            IsDeleted = false,
                             Name = "Shop 2"
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2021, 12, 16, 17, 45, 59, 775, DateTimeKind.Utc).AddTicks(3641),
-                            IsDeleted = 0,
+                            Created = new DateTime(2021, 12, 22, 18, 10, 11, 542, DateTimeKind.Utc).AddTicks(1123),
+                            IsDeleted = false,
                             Name = "Shop 3"
                         });
+                });
+
+            modelBuilder.Entity("_20211215_EF_ShopApp.Models.TagModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("_20211215_EF_ShopApp.Models.ItemTagModel", b =>
+                {
+                    b.HasOne("_20211215_EF_ShopApp.Models.ShopItemModel", "ShopItem")
+                        .WithMany("ItemTags")
+                        .HasForeignKey("ShopItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("_20211215_EF_ShopApp.Models.TagModel", "Tag")
+                        .WithMany("ItemTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ShopItem");
+
+                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("_20211215_EF_ShopApp.Models.ShopItemModel", b =>
@@ -152,9 +210,19 @@ namespace _20211215_EF_ShopApp.Migrations
                     b.Navigation("Shop");
                 });
 
+            modelBuilder.Entity("_20211215_EF_ShopApp.Models.ShopItemModel", b =>
+                {
+                    b.Navigation("ItemTags");
+                });
+
             modelBuilder.Entity("_20211215_EF_ShopApp.Models.ShopModel", b =>
                 {
                     b.Navigation("ShopItems");
+                });
+
+            modelBuilder.Entity("_20211215_EF_ShopApp.Models.TagModel", b =>
+                {
+                    b.Navigation("ItemTags");
                 });
 #pragma warning restore 612, 618
         }

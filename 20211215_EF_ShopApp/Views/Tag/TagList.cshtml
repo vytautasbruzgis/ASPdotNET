@@ -1,0 +1,25 @@
+﻿@model List<TagModel>
+<h3>Tag list</h3>
+<br/>
+
+@if (@Model.Any())
+{
+        <table class="table">
+            <thead><th scope="col">Tag Id</th><th scope="col">Name</th><th scope="col">Actions</th></thead>
+        @foreach(var tag in @Model)
+        {
+            <tr scope="row">
+            <td scope="col">@tag.Id</td><td scope="col">@tag.Name</td>
+            <td>
+                <a href="/Shop/Details/@tag.Id">Details</a>
+                @Html.ActionLink("Update", "Update", "Tag", new { Id = @tag.Id}, null)
+                @Html.ActionLink("Delete", "Delete", "Tag", new { Id = @tag.Id}, null)
+            </td>
+            </tr>
+        }
+        </table>
+} else {
+        <h4>List is empty</h4>
+}
+<br />
+<a href="/Tag/Create">Add new</a>

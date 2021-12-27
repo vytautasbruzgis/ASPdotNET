@@ -9,6 +9,6 @@ namespace _20211215_EF_ShopApp.Models
         [Required]
         public string Name { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
-        public int IsDeleted { get; set; } = 0;
+        public bool IsDeleted { get; set; } = false;
     }
 }

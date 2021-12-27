@@ -1,6 +1,7 @@
-﻿@model ShopItemWithShopListModel
+﻿@using _20211215_EF_ShopApp.Models.Dtos
+@model ShopItemDto
 
-using (@Html.BeginForm("Update", "ShopItem", FormMethod.Post))
+@using (@Html.BeginForm("Update", "ShopItem", FormMethod.Post))
 {
     @Html.LabelFor(a => a.Name)
     @Html.TextBoxFor(a => a.Name)
@@ -14,5 +15,11 @@ using (@Html.BeginForm("Update", "ShopItem", FormMethod.Post))
     @Html.LabelFor(a => a.ShopId)
     @Html.DropDownListFor(a => a.ShopId, new SelectList(Model.ShopList, "Id", "Name"), "", new { @class = "form-control" })
     @Html.ValidationMessageFor(a => a.ShopId)
-    <br />   
+    <br />
+    
+    @Html.LabelFor(a => a.ItemTags)
+    @Html.ListBoxFor(a => a.SelectedTagIds, new SelectList(@Model.TagList, "Id", "Name"))
+    
+
     <input type="submit" value="Submit"/>
+}

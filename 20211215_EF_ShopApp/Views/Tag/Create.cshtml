@@ -1,0 +1,10 @@
+﻿@model TagModel
+
+@using (Html.BeginForm("Create", "Tag", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    @Html.ValidationMessageFor(a => a.Name)
+    <br />
+    <input type="submit" value="Submit"/>
+}

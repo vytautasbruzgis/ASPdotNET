@@ -8,12 +8,36 @@ namespace _20211215_FirstEFApp.Data
     {
         public DbSet<ShopModel> Shops { get; set; }
         public DbSet<ShopItemModel> ShopItems { get; set; }
+        public DbSet<TagModel> Tags { get; set; }
+        public DbSet<ItemTagModel> ItemTags { get; set; }
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ItemTagModel>().HasKey(x => new { x.TagId, x.ShopItemId });
+
+            modelBuilder.Entity<TagModel>().HasMany(x => x.ItemTags).WithOne(x => x.Tag);
+            modelBuilder.Entity<ShopItemModel>().HasMany(x => x.ItemTags).WithOne(x => x.ShopItem);
+
+            modelBuilder.Entity<TagModel>().HasData(
+                new TagModel()
+                {
+                    Id = 1,
+                    Name = "Tag 1"
+                },
+                 new TagModel()
+                 {
+                     Id = 2,
+                     Name = "Tag 2"
+                 },
+                new TagModel()
+                {
+                    Id = 3,
+                    Name = "Tag 3"
+                });
+
             modelBuilder.Entity<ShopModel>().HasData(
                 new ShopModel()
                 {

@@ -13,11 +13,10 @@ namespace _20211215_EF_ShopApp.Services
         {
             _dataContext = dataContext;
         }
-        
         public List<ShopModel> GetAllNotDeleted()
         {
             var shops = new List<ShopModel>();
-            shops = _dataContext.Shops.Where(x => x.IsDeleted == 0).ToList();
+            shops = _dataContext.Shops.Where(x => x.IsDeleted == false).ToList();
             return shops;
         }
         public List<ShopModel> GetSelectedAndAllNotDeleted(int id)
@@ -34,12 +33,10 @@ namespace _20211215_EF_ShopApp.Services
             }
             return shops;
         }
-
         public ShopModel GetById(int id)
         {
             return _dataContext.Shops.FirstOrDefault(x => x.Id == id);
         }
-
         public void Add(ShopModel m)
         {
             if (m == null)
@@ -50,7 +47,6 @@ namespace _20211215_EF_ShopApp.Services
                 _dataContext.SaveChanges();
             }
         }
-
         public void Update(ShopModel model)
         {
             var shop = _dataContext.Shops.FirstOrDefault(x => x.Id == model.Id);
@@ -66,7 +62,7 @@ namespace _20211215_EF_ShopApp.Services
             var shop = _dataContext.Shops.FirstOrDefault(x => x.Id == id);
             if (shop != null)
             {
-                shop.IsDeleted = 1;
+                shop.IsDeleted = true;
                 _dataContext.Shops.Update(shop);
                 _dataContext.SaveChanges();
             }
