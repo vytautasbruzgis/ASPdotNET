@@ -20,14 +20,15 @@
             </tr>
             <tr scope = "row">
               <td scope="col">Rangos darbus atliks</td>
-              <td scope="col">
-                  
+              <td scope="col">           
                   @Html.DropDownListFor(a => a.Registrationattributes.ContractorTypeId, new SelectList(@Model.ContractorTypes, "Id", "Name"), "", new { @class = "form-control" })
               </td>
             </tr>
             <tr scope = "row">
               <td scope="col">Verslo klientas</td>
-              <td scope="col"></td>
+              <td scope="col">
+                    @Html.DropDownListFor(a => a.Registrationattributes.IsBusinessClient, new [] { new SelectListItem { Text = "Taip", Value="true" } , new SelectListItem { Text = "Ne", Value="false"} }, "", new { @class = "form-control" })    
+              </td>
             </tr>
             <tr scope = "row">
               <td scope="col">Skaičiavimo metodas</td>
