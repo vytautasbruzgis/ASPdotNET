@@ -9,10 +9,15 @@ namespace _20211228_IgnitisHomeWork.Controllers
     {
         private RegistrationAttributesService _regAttrService;
         private ContractorTypeService _contrTypeService;
-        public RegistrationAttributeController(RegistrationAttributesService regAttrService, ContractorTypeService contrTypeService)
+        private CalculationTypeService _calcTypeService;
+        private CustomerImportanceService _custImportanceService;
+        public RegistrationAttributeController(RegistrationAttributesService regAttrService, ContractorTypeService contrTypeService,
+            CustomerImportanceService custImpService, CalculationTypeService calcTypeService)
         {
             _regAttrService = regAttrService;
             _contrTypeService = contrTypeService;
+            _calcTypeService = calcTypeService;
+            _custImportanceService = custImpService;
         }
         public IActionResult Index()
         {
@@ -23,7 +28,9 @@ namespace _20211228_IgnitisHomeWork.Controllers
             RegPozDto regPoz = new RegPozDto()
             {
                 Registrationattributes = _regAttrService.Get(id),
-                ContractorTypes = _contrTypeService.GetAll()
+                ContractorTypes = _contrTypeService.GetAll(),
+                CalculationTypes = _calcTypeService.GetAll(),
+                CustomerImportances = _custImportanceService.GetAll()
             };
             return View(regPoz);
         }

@@ -36,6 +36,8 @@ namespace _20211228_IgnitisHomeWork
             services.AddTransient<ContractorTypeRepository>();
             services.AddTransient<RegistrationAttributesService>();
             services.AddTransient<ContractorTypeService>();
+            services.AddTransient<CalculationTypeService>();
+            services.AddTransient<CustomerImportanceService>();
 
 
         }

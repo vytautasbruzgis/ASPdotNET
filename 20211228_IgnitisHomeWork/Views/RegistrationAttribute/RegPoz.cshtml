@@ -14,29 +14,32 @@
             <tr scope = "row">
               <td scope="col">Reikia atlikti rangos darbus</td>
               <td scope="col">
-                @*@Html.DropDownListFor(a => a.Registrationattributes.HasContractWork, 
-                    new SelectList(Model.ShopList, "Id", "Name"), "", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(a => a.Registrationattributes.HasContractWork, new [] { new SelectListItem { Text = "Taip", Value="true" } , new SelectListItem { Text = "Ne", Value="false"} }, "", new { @class = "form-control", disabled = "disabled" })    
               </td>
             </tr>
             <tr scope = "row">
               <td scope="col">Rangos darbus atliks</td>
               <td scope="col">           
-                  @Html.DropDownListFor(a => a.Registrationattributes.ContractorTypeId, new SelectList(@Model.ContractorTypes, "Id", "Name"), "", new { @class = "form-control" })
+                    @Html.DropDownListFor(a => a.Registrationattributes.ContractorTypeId, new SelectList(@Model.ContractorTypes, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
               </td>
             </tr>
             <tr scope = "row">
               <td scope="col">Verslo klientas</td>
               <td scope="col">
-                    @Html.DropDownListFor(a => a.Registrationattributes.IsBusinessClient, new [] { new SelectListItem { Text = "Taip", Value="true" } , new SelectListItem { Text = "Ne", Value="false"} }, "", new { @class = "form-control" })    
+                    @Html.DropDownListFor(a => a.Registrationattributes.IsBusinessClient, new [] { new SelectListItem { Text = "Taip", Value="true" } , new SelectListItem { Text = "Ne", Value="false"} }, "", new { @class = "form-control", disabled = "disabled" })    
               </td>
             </tr>
             <tr scope = "row">
               <td scope="col">Skaičiavimo metodas</td>
-              <td scope="col"></td>
+              <td scope="col">
+                  @Html.DropDownListFor(a => a.Registrationattributes.CalculationTypeId, new SelectList(@Model.CalculationTypes, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
+              </td>
             </tr>
             <tr scope = "row">
               <td scope="col">Svarbus klientas</td>
-              <td scope="col"></td>
+              <td scope="col">
+                  @Html.DropDownListFor(a => a.Registrationattributes.CustomerImportanceId, new SelectList(@Model.CustomerImportances, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
+              </td>
             </tr>
         </tbody>  
     </table>
