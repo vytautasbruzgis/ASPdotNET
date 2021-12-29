@@ -101,6 +101,7 @@ namespace _20211215_EF_ShopApp.Controllers
             {
                 return View(model);
             }
+            model.Id = model.Id;
             _shopItemService.Update(model);
             return RedirectToAction("ItemList");
         }

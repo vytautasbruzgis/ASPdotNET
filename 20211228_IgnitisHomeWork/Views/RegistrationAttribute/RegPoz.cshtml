@@ -1,0 +1,48 @@
+﻿@using _20211228_IgnitisHomeWork.Models.Dtos
+@model RegPozDto
+
+@using (Html.BeginForm("Create", "RegistrationAttribute", FormMethod.Post))
+{
+    <table class="table">
+        <thead>
+            <tr scope = "row" class="">
+              <th scope="col">Registracijos požymiai</th>
+              <th scope="col">Reikšmė</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope = "row">
+              <td scope="col">Reikia atlikti rangos darbus</td>
+              <td scope="col">
+                @*@Html.DropDownListFor(a => a.Registrationattributes.HasContractWork, 
+                    new SelectList(Model.ShopList, "Id", "Name"), "", new { @class = "form-control" })*@
+              </td>
+            </tr>
+            <tr scope = "row">
+              <td scope="col">Rangos darbus atliks</td>
+              <td scope="col">
+                  
+                  @Html.DropDownListFor(a => a.Registrationattributes.ContractorTypeId, new SelectList(@Model.ContractorTypes, "Id", "Name"), "", new { @class = "form-control" })
+              </td>
+            </tr>
+            <tr scope = "row">
+              <td scope="col">Verslo klientas</td>
+              <td scope="col"></td>
+            </tr>
+            <tr scope = "row">
+              <td scope="col">Skaičiavimo metodas</td>
+              <td scope="col"></td>
+            </tr>
+            <tr scope = "row">
+              <td scope="col">Svarbus klientas</td>
+              <td scope="col"></td>
+            </tr>
+        </tbody>  
+    </table>
+    <br />   
+    <input type="submit" value="Submit"/>
+}
+
+
+  
+  
