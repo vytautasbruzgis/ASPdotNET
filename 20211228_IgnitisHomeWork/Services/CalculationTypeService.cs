@@ -1,8 +1,8 @@
-﻿using _20211228_IgnitisHomeWork.Models;
-using _20211228_IgnitisHomeWork.Repositories;
+﻿using _20211230_IgnitisHomeWork_V2.Models;
+using _20211230_IgnitisHomeWork_V2.Repositories;
 using System.Collections.Generic;
 
-namespace _20211228_IgnitisHomeWork.Services
+namespace _20211230_IgnitisHomeWork_V2.Services
 {
     public class CalculationTypeService
     {

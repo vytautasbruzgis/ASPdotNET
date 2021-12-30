@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace _20211228_IgnitisHomeWork.Migrations
+namespace _20211230_IgnitisHomeWork_V2.Migrations
 {
     public partial class Init : Migration
     {

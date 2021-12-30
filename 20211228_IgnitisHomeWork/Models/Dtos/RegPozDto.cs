@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace _20211228_IgnitisHomeWork.Models.Dtos
+namespace _20211230_IgnitisHomeWork_V2.Models.Dtos
 {
     public class RegPozDto
     {

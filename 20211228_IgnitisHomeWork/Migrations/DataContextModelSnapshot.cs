@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _20211228_IgnitisHomeWork.Data;
+using _20211230_IgnitisHomeWork_V2.Data;
 
-namespace _20211228_IgnitisHomeWork.Migrations
+namespace _20211230_IgnitisHomeWork_V2.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -46,9 +46,9 @@ namespace _20211228_IgnitisHomeWork.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2021, 12, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2021, 12, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2021, 12, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Automatinis"
                         });
                 });
@@ -80,9 +80,9 @@ namespace _20211228_IgnitisHomeWork.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2021, 12, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2021, 12, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2021, 12, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Metinis rangovas"
                         });
                 });
@@ -114,9 +114,9 @@ namespace _20211228_IgnitisHomeWork.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2021, 12, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2021, 12, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2021, 12, 30, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = ""
                         });
                 });

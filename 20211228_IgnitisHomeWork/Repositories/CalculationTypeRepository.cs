@@ -1,7 +1,7 @@
-﻿using _20211228_IgnitisHomeWork.Data;
-using _20211228_IgnitisHomeWork.Models;
+﻿using _20211230_IgnitisHomeWork_V2.Data;
+using _20211230_IgnitisHomeWork_V2.Models;
 
-namespace _20211228_IgnitisHomeWork.Repositories
+namespace _20211230_IgnitisHomeWork_V2.Repositories
 {
     public class CalculationTypeRepository : RepositoryBase<CalculationTypeModel>
     {

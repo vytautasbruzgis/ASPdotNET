@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _20211228_IgnitisHomeWork.Data;
+using _20211230_IgnitisHomeWork_V2.Data;
 
-namespace _20211228_IgnitisHomeWork.Migrations
+namespace _20211230_IgnitisHomeWork_V2.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20211228194812_Init")]

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20211228_IgnitisHomeWork
+namespace _20211230_IgnitisHomeWork_V2
 {
     public class Program
     {

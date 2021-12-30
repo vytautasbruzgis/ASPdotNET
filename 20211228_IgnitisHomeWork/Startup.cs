@@ -1,6 +1,6 @@
-using _20211228_IgnitisHomeWork.Data;
-using _20211228_IgnitisHomeWork.Repositories;
-using _20211228_IgnitisHomeWork.Services;
+using _20211230_IgnitisHomeWork_V2.Data;
+using _20211230_IgnitisHomeWork_V2.Repositories;
+using _20211230_IgnitisHomeWork_V2.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20211228_IgnitisHomeWork
+namespace _20211230_IgnitisHomeWork_V2
 {
     public class Startup
     {

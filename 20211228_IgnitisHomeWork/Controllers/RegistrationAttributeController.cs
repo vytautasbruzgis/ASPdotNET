@@ -1,9 +1,9 @@
-﻿using _20211228_IgnitisHomeWork.Models;
-using _20211228_IgnitisHomeWork.Models.Dtos;
-using _20211228_IgnitisHomeWork.Services;
+﻿using _20211230_IgnitisHomeWork_V2.Models;
+using _20211230_IgnitisHomeWork_V2.Models.Dtos;
+using _20211230_IgnitisHomeWork_V2.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace _20211228_IgnitisHomeWork.Controllers
+namespace _20211230_IgnitisHomeWork_V2.Controllers
 {
     public class RegistrationAttributeController : Controller
     {

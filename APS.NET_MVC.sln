@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20211215_EF_ShopApp", "2021
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20211228_IgnitisHomeWork", "20211228_IgnitisHomeWork\20211228_IgnitisHomeWork.csproj", "{DDEA401D-7EF2-42B7-962F-71D8D7684F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20211230_IgnitisHomework_V2", "20211230_IgnitisHomework_V2\20211230_IgnitisHomework_V2.csproj", "{48E016C7-5FBB-43AA-8108-C0E07B6F6AD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DDEA401D-7EF2-42B7-962F-71D8D7684F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDEA401D-7EF2-42B7-962F-71D8D7684F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDEA401D-7EF2-42B7-962F-71D8D7684F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E016C7-5FBB-43AA-8108-C0E07B6F6AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E016C7-5FBB-43AA-8108-C0E07B6F6AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E016C7-5FBB-43AA-8108-C0E07B6F6AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E016C7-5FBB-43AA-8108-C0E07B6F6AD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

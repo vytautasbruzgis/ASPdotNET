@@ -1,7 +1,7 @@
-﻿using _20211228_IgnitisHomeWork.Models;
+﻿using _20211230_IgnitisHomeWork_V2.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace _20211228_IgnitisHomeWork.Data
+namespace _20211230_IgnitisHomeWork_V2.Data
 {
 
     public class DataContext : DbContext

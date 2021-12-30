@@ -1,10 +1,10 @@
-﻿using _20211228_IgnitisHomeWork.Data;
-using _20211228_IgnitisHomeWork.Models;
+﻿using _20211230_IgnitisHomeWork_V2.Data;
+using _20211230_IgnitisHomeWork_V2.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _20211228_IgnitisHomeWork.Repositories
+namespace _20211230_IgnitisHomeWork_V2.Repositories
 {
     public abstract class RepositoryBase<T> where T : Entity
     {
