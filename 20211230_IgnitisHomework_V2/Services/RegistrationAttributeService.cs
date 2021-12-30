@@ -1,4 +1,6 @@
-﻿using _20211230_IgnitisHomework_V2.Repositories;
+﻿using _20211230_IgnitisHomework_V2.Models;
+using _20211230_IgnitisHomework_V2.Repositories;
+using System.Collections.Generic;
 
 namespace _20211230_IgnitisHomework_V2.Services
 {
@@ -8,6 +10,10 @@ namespace _20211230_IgnitisHomework_V2.Services
         public RegistrationAttributeService(RegistrationAttributeRepository regAttributeRepo)
         {
             _regAttributeRepo = regAttributeRepo;
+        }
+        public List<RegistrationAttribute> GetByRegistration(int id)
+        {
+            return _regAttributeRepo.GetByRegistrationId(id);
         }
     }
 }

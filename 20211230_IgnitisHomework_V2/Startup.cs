@@ -64,7 +64,7 @@ namespace _20211230_IgnitisHomework_V2
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Registration}/{action=Index}/{id?}");
             });
         }
     }

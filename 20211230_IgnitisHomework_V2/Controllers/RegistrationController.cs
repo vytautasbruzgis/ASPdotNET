@@ -11,12 +11,13 @@ namespace _20211230_IgnitisHomework_V2.Controllers
         public RegistrationController(RegistrationService regService, RegistrationAttributeService registrationAttributeService)
         {
             _regService = regService;
-            _regAttributeService
+            _regAttributeService = registrationAttributeService;
         }
         public IActionResult Index()
         {
             RegistrationViewDto model = new RegistrationViewDto();
-            return View();
+            model.Registration = _regService.Get(1);
+            return View(model);
         }
     }
 }

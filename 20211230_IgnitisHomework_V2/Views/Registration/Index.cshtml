@@ -1,5 +1,6 @@
-﻿@using _20211230_IgnitisHomeWork_V2.Models.Dtos
-@*@model RegPozDto
+﻿@using _20211230_IgnitisHomework_V2.Models.Dtos
+@model RegistrationViewDto
+Works
 
 @using (Html.BeginForm("Create", "RegistrationAttribute", FormMethod.Post))
 {
@@ -10,13 +11,20 @@
               <th scope="col">Reikšmė</th>
             </tr>
         </thead>
-        <tbody>
-            <tr scope = "row">
-              <td scope="col">Reikia atlikti rangos darbus</td>
-              <td scope="col">
-                    @Html.DropDownListFor(a => a.Registrationattributes.HasContractWork, new [] { new SelectListItem { Text = "Taip", Value="true" } , new SelectListItem { Text = "Ne", Value="false"} }, "", new { @class = "form-control", disabled = "disabled" })    
-              </td>
-            </tr>
+        @if (@Model.Registration.Attributes.Any())
+        {
+            <tbody>
+            @for(int i = 0; i < @Model.Registration.Attributes.Count(); i++)
+            {
+                <tr scope = "row">
+                <td scope="col">@Model.Registration.Attributes[i].Attribute.Name</td>
+                <td scope="col">
+                    @Html.DropDownListFor(a => a.Registration.Attributes[i].SelectedOptionId, new SelectList(@Model.Registration.Attributes[i].Attribute.Options, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })    
+                </td>
+                </tr>
+            }
+        @*
+            
             <tr scope = "row">
               <td scope="col">Rangos darbus atliks</td>
               <td scope="col">           
@@ -41,11 +49,15 @@
                   @Html.DropDownListFor(a => a.Registrationattributes.CustomerImportanceId, new SelectList(@Model.CustomerImportances, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
               </td>
             </tr>
-        </tbody>  
+        *@
+        </tbody>
+        }
+        
+        
     </table>
     <br />   
     <input type="submit" value="Submit"/>
-}*@
+}
 
   
   

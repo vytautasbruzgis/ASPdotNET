@@ -2,5 +2,7 @@
 {
     public class RegistrationViewDto
     {
+        public Registration Registration { get; set; }
+
     }
 }
