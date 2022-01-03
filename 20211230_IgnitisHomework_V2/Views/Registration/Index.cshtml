@@ -20,18 +20,15 @@
             saveButton.disabled = false;
             cancelButton.disabled = false;
             editButton.disabled = true;
-            var dropdowns = document.querySelectorAll('select');
-            dropdowns.forEach(element => element.disabled = false)
+            formSelects.forEach(element => element.disabled = false)
 
         } else {
-            console.log("Disablinu");
             saveButton.disabled = true;
             cancelButton.disabled = true;
             editButton.disabled = false;
-            var dropdowns = document.querySelectorAll('select');
-            dropdowns.forEach(element => element.disabled = true)
             for (let i = 0; i < formSelects.length; i++) {
                 formSelects[i].value = initialValues[i];
+                formSelects[i].disabled = true;
             }
         }
 
