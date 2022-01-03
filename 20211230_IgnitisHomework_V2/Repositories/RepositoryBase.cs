@@ -23,5 +23,10 @@ namespace _20211230_IgnitisHomeWork_V2.Repositories
         {
             return _dbSet.ToList(); 
         }
+        public void Update(T item)
+        {
+            _dbSet.Update(item);
+            _dataContext.SaveChanges();
+        }
     }
 }

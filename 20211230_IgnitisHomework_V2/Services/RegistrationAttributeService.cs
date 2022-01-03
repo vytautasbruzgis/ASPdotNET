@@ -15,5 +15,13 @@ namespace _20211230_IgnitisHomework_V2.Services
         {
             return _regAttributeRepo.GetByRegistrationId(id);
         }
+        public void Update(RegistrationAttribute attribute)
+        {
+            _regAttributeRepo.Update(attribute);
+        }
+        public RegistrationAttribute Get(int id)
+        {
+            return _regAttributeRepo.Get(id);
+        }
     }
 }

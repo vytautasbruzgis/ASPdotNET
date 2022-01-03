@@ -19,5 +19,16 @@ namespace _20211230_IgnitisHomework_V2.Controllers
             model.Registration = _regService.Get(1);
             return View(model);
         }
+
+        public IActionResult Update(RegistrationViewDto model)
+        {
+            foreach (var attribute in model.Registration.Attributes)
+            {
+                var tmpAttribute = _regAttributeService.Get(attribute.Id);
+                tmpAttribute.SelectedOptionId = attribute.SelectedOptionId;
+                _regAttributeService.Update(tmpAttribute);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

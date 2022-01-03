@@ -1,8 +1,45 @@
 ﻿@using _20211230_IgnitisHomework_V2.Models.Dtos
 @model RegistrationViewDto
-Works
+<script>
+    let initialValues = [];
 
-@using (Html.BeginForm("Create", "RegistrationAttribute", FormMethod.Post))
+    window.onload = function () {
+        let formSelects2 = document.querySelectorAll('select');
+        formSelects2.forEach(element => {
+            initialValues.push(element.value); /* kodėl šitos reikšmės matomos toggleSavingForm()*/ 
+        });
+    }
+
+    function toggleSavingForm(){
+        var saveButton = document.getElementById('save');
+        var cancelButton = document.getElementById('cancel');
+        var editButton = document.getElementById('edit');
+        let formSelects = document.querySelectorAll('select');
+
+        if (editButton.disabled === false){
+            saveButton.disabled = false;
+            cancelButton.disabled = false;
+            editButton.disabled = true;
+            var dropdowns = document.querySelectorAll('select');
+            dropdowns.forEach(element => element.disabled = false)
+
+        } else {
+            console.log("Disablinu");
+            saveButton.disabled = true;
+            cancelButton.disabled = true;
+            editButton.disabled = false;
+            var dropdowns = document.querySelectorAll('select');
+            dropdowns.forEach(element => element.disabled = true)
+            for (let i = 0; i < formSelects.length; i++) {
+                formSelects[i].value = initialValues[i];
+            }
+        }
+
+        
+    }
+</script>
+
+@using (Html.BeginForm("Update", "Registration", FormMethod.Post, new { Id = "RegPozEditForm"}))
 {
     <table class="table">
         <thead>
@@ -19,44 +56,18 @@ Works
                 <tr scope = "row">
                 <td scope="col">@Model.Registration.Attributes[i].Attribute.Name</td>
                 <td scope="col">
+                    @Html.HiddenFor(a => a.Registration.Attributes[i].Id)
                     @Html.DropDownListFor(a => a.Registration.Attributes[i].SelectedOptionId, new SelectList(@Model.Registration.Attributes[i].Attribute.Options, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })    
                 </td>
                 </tr>
             }
-        @*
-            
-            <tr scope = "row">
-              <td scope="col">Rangos darbus atliks</td>
-              <td scope="col">           
-                    @Html.DropDownListFor(a => a.Registrationattributes.ContractorTypeId, new SelectList(@Model.ContractorTypes, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
-              </td>
-            </tr>
-            <tr scope = "row">
-              <td scope="col">Verslo klientas</td>
-              <td scope="col">
-                    @Html.DropDownListFor(a => a.Registrationattributes.IsBusinessClient, new [] { new SelectListItem { Text = "Taip", Value="true" } , new SelectListItem { Text = "Ne", Value="false"} }, "", new { @class = "form-control", disabled = "disabled" })    
-              </td>
-            </tr>
-            <tr scope = "row">
-              <td scope="col">Skaičiavimo metodas</td>
-              <td scope="col">
-                  @Html.DropDownListFor(a => a.Registrationattributes.CalculationTypeId, new SelectList(@Model.CalculationTypes, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
-              </td>
-            </tr>
-            <tr scope = "row">
-              <td scope="col">Svarbus klientas</td>
-              <td scope="col">
-                  @Html.DropDownListFor(a => a.Registrationattributes.CustomerImportanceId, new SelectList(@Model.CustomerImportances, "Id", "Name"), "", new { @class = "form-control", disabled = "disabled" })
-              </td>
-            </tr>
-        *@
         </tbody>
-        }
-        
-        
+        }    
     </table>
-    <br />   
-    <input type="submit" value="Submit"/>
+    <br />
+    <input type="button" id="edit" value="Koreguoti požymius" onclick="toggleSavingForm()" />
+    <input type="button" id="save" value="Saugoti pataisymus" onclick="document.getElementById('RegPozEditForm').submit()" disabled />
+    <input type="button" id="cancel" value="Atšaukti pataisymus" onclick="toggleSavingForm()" disabled />
 }
 
   
