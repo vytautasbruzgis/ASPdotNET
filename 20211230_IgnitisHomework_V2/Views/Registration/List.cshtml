@@ -1,0 +1,24 @@
+﻿@model List<Registration>
+<h3>Shop list</h3>
+<br/>
+
+@if (@Model.Any())
+{
+        <table class="table">
+            <thead><th scope="col">Registration Id</th><th scope="col">Name</th><th scope="col">Actions</th></thead>
+        @foreach(var registration in @Model)
+        {
+            <tr scope="row">
+            <td scope="col">@registration.Id</td><td scope="col">Name</td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Registration", new { Id = @registration.Id}, null)
+                @Html.ActionLink("Delete", "Delete", "Registration", new { Id = @registration.Id}, null)
+            </td>
+            </tr>
+        }
+        </table>
+} else {
+        <h4>List is empty</h4>
+}
+<br />
+<a href="/Registration/Create" onclick="void(0);">Add new {TBD}</a>

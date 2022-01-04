@@ -37,7 +37,7 @@
     }
 </script>
 
-@using (Html.BeginForm("Update", "Registration", FormMethod.Post, new { Id = "RegPozEditForm"}))
+@using (Html.BeginForm("Update", "Registration", new { Id = @Model.Registration.Id }, FormMethod.Post, null, new {Id = "RegPozEditForm"}))
 {
     <table class="table">
         <thead>

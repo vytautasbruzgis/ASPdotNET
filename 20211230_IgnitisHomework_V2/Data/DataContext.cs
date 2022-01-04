@@ -223,6 +223,71 @@ namespace _20211230_IgnitisHomework_V2.Data
                 LastModified = System.DateTime.Today,
                 IsDeleted = false
             });
+
+            modelBuilder.Entity<RegistrationAttribute>().HasData(
+            new RegistrationAttribute()
+            {
+                Id = 6,
+                AttributeId = 1,
+                RegistrationId = 2,
+                SelectedOptionId = 1,
+                Created = System.DateTime.Today,
+                LastModified = System.DateTime.Today,
+                IsDeleted = false
+            });
+            modelBuilder.Entity<RegistrationAttribute>().HasData(
+            new RegistrationAttribute()
+            {
+                Id = 7,
+                AttributeId = 2,
+                RegistrationId = 2,
+                SelectedOptionId = 3,
+                Created = System.DateTime.Today,
+                LastModified = System.DateTime.Today,
+                IsDeleted = false
+            });
+            modelBuilder.Entity<RegistrationAttribute>().HasData(
+            new RegistrationAttribute()
+            {
+                Id = 8,
+                AttributeId = 3,
+                RegistrationId = 2,
+                SelectedOptionId = 5,
+                Created = System.DateTime.Today,
+                LastModified = System.DateTime.Today,
+                IsDeleted = false
+            });
+            modelBuilder.Entity<RegistrationAttribute>().HasData(
+            new RegistrationAttribute()
+            {
+                Id = 9,
+                AttributeId = 4,
+                RegistrationId = 2,
+                SelectedOptionId = 6,
+                Created = System.DateTime.Today,
+                LastModified = System.DateTime.Today,
+                IsDeleted = false
+            });
+            modelBuilder.Entity<RegistrationAttribute>().HasData(
+            new RegistrationAttribute()
+            {
+                Id = 10,
+                AttributeId = 5,
+                RegistrationId = 2,
+                SelectedOptionId = 7,
+                Created = System.DateTime.Today,
+                LastModified = System.DateTime.Today,
+                IsDeleted = false
+            });
+            modelBuilder.Entity<Registration>().HasData(
+            new Registration()
+            {
+                Id = 2,
+                Created = System.DateTime.Today,
+                LastModified = System.DateTime.Today,
+                IsDeleted = false
+            });
+
         }
     }
 }
