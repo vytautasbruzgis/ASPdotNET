@@ -2,9 +2,10 @@
 @model RegistrationViewDto
 <script>
     let initialValues = [];
+    let formSelects2;
 
     window.onload = function () {
-        let formSelects2 = document.querySelectorAll('select');
+        formSelects2 = document.querySelectorAll('select');
         formSelects2.forEach(element => {
             initialValues.push(element.value); /* kodėl šitos reikšmės matomos toggleSavingForm()*/ 
         });
@@ -14,21 +15,21 @@
         var saveButton = document.getElementById('save');
         var cancelButton = document.getElementById('cancel');
         var editButton = document.getElementById('edit');
-        let formSelects = document.querySelectorAll('select');
+        //let formSelects = document.querySelectorAll('select');
 
         if (editButton.disabled === false){
             saveButton.disabled = false;
             cancelButton.disabled = false;
             editButton.disabled = true;
-            formSelects.forEach(element => element.disabled = false)
+            formSelects2.forEach(element => element.disabled = false)
 
         } else {
             saveButton.disabled = true;
             cancelButton.disabled = true;
             editButton.disabled = false;
-            for (let i = 0; i < formSelects.length; i++) {
-                formSelects[i].value = initialValues[i];
-                formSelects[i].disabled = true;
+            for (let i = 0; i < formSelects2.length; i++) {
+                formSelects2[i].value = initialValues[i];
+                formSelects2[i].disabled = true;
             }
         }
 
@@ -62,9 +63,9 @@
         }    
     </table>
     <br />
-    <input type="button" id="edit" value="Koreguoti požymius" onclick="toggleSavingForm()" />
-    <input type="button" id="save" value="Saugoti pataisymus" onclick="document.getElementById('RegPozEditForm').submit()" disabled />
-    <input type="button" id="cancel" value="Atšaukti pataisymus" onclick="toggleSavingForm()" disabled />
+    <input type="button" class="btn btn-primary" id="edit" value="Koreguoti požymius" onclick="toggleSavingForm()" />
+    <input type="button" class="btn btn-success" id="save" value="Saugoti pataisymus" onclick="document.getElementById('RegPozEditForm').submit()" disabled />
+    <input type="button" class="btn btn-secondary" id="cancel" value="Atšaukti pataisymus" onclick="toggleSavingForm()" disabled />
 }
 
   
