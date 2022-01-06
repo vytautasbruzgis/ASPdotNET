@@ -1,0 +1,33 @@
+﻿@model List<CurrencyModel>
+@*if (@Model.Any())
+{*@     
+        @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, null, new {Id = "RegPozEditForm"}))
+        {
+    <input type="text" id="date" name="date" />  <input type="submit" class="btn btn-primary" value="Tikrinti kursus"/>
+}
+        <br/>
+        <table class="table">
+            <thead>
+                <th scope="col">Currency</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Rate</th>
+                <th scope="col">LastRate</th>
+                <th scope="col">ChangePercentage</th>
+            </thead>
+        @foreach(var currency in @Model)
+        {
+            <tr scope="row">
+                <td scope="col">@currency.Currency</td>
+                <td scope="col">@currency.Quantity</td>
+                <td scope="col">@currency.Rate</td>
+                <td scope="col">@currency.LastRate</td>
+                <td scope="col"><i class="@(currency.ChangePercentage > 0 ? "bi bi-arrow-up text-success" : currency.ChangePercentage < 0 ? "bi bi-arrow-down text-danger" : "")">@currency.ChangePercentage</i>
+                </td>
+            </tr>
+        }
+        </table>
+@*} else {
+        <h4>List is empty</h4>
+}*@
+<br />
+<a href="/Registration/Create" onclick="void(0);">Add new {TBD}</a>
