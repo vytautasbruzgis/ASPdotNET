@@ -1,0 +1,32 @@
+﻿@using _20220107_HotelCleaning.Models.Dtos
+@model List<HotelDto>
+
+<h3>Hotel list</h3>
+<br/>
+
+@if (@Model.Any())
+{
+        <table class="table">
+            <thead>
+                <th scope="col">Hotel</th>
+                <th scope="col">City</th>
+                <th scope="col">Address</th>
+                <th scope="col">Actions</th>
+            </thead>
+            @foreach(var hotel in @Model)
+            {
+                <tr scope="row">
+                    <td scope="col">@hotel.Name</td>
+                    <td scope="col">@hotel.City</td>
+                    <td scope="col">@hotel.Address</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Hotel", new { Id = @hotel.HotelId}, null)
+                    </td>
+                </tr>
+            }
+        </table>
+} else {
+        <h4>List is empty</h4>
+}
+<br />
+<a href="/Hotel/Create">Add new</a>

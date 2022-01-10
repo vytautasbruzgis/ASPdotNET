@@ -1,0 +1,33 @@
+﻿@using _20220107_HotelCleaning.Models.Dtos
+@model HotelDetailsDto
+
+<h3>Hotel "@Model.Name", @Model.City</h3>
+<br />
+
+<table class="table">
+<thead>
+    <th scope="col">RoomNumber</th>
+    <th scope="col">Name</th>
+    <th scope="col">Has to be cleaned</th>
+    <th scope="col">Actions</th>
+</thead>
+@if (@Model.Rooms.Any())
+{
+            @foreach(var room in @Model.Rooms)
+            {
+                <tr scope="row">
+                    <td scope="col">@room.RoomNumber</td>
+                    <td scope="col">@room.Name</td>
+                    <td scope="col">@room.IsCleaned ? "Yes" : "No" </td>
+                    <td>
+                        @Html.ActionLink("Order cleaning", "Create", "Task", new { roomId = @room.Id }, null)
+                    </td>
+                </tr>
+            }
+        
+} else {
+        <tr scope="row"><td scope="col" colspan="4">Room list is empty</td></tr>
+}
+</table>
+<br />
+@Html.ActionLink("Add new room", "Create", "Room", new { hotelId = @Model.HotelId }, null)

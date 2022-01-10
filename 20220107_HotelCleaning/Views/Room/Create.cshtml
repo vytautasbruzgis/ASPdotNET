@@ -1,0 +1,10 @@
+﻿@using _20220107_HotelCleaning.Models.Dtos
+@model RoomCreateDto
+@{
+}
+<H4>Create a new room for hotel @Model.HotelId</H4>
+
+@using (Html.BeginForm("Create", "Room", @*new { Id = @Model.Registration.Id }*@ null, FormMethod.Post, null, new {Id = "RoomCreateForm" }))
+{
+    @Html.DropDownListFor(a => a.HotelId, new SelectList(@Model.Hotels, "Id", "Name"), "", new { @class = "form-control"})        
+}

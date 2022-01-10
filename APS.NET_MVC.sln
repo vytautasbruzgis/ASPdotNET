@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20211228_IgnitisHomeWork", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20211230_IgnitisHomework_V2", "20211230_IgnitisHomework_V2\20211230_IgnitisHomework_V2.csproj", "{48E016C7-5FBB-43AA-8108-C0E07B6F6AD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20220105_SEB_HomeWork", "20220105_SEB_HomeWork\20220105_SEB_HomeWork.csproj", "{04B151C1-C9D3-4852-BD6E-053DA3E6423F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20220105_SEB_HomeWork", "20220105_SEB_HomeWork\20220105_SEB_HomeWork.csproj", "{04B151C1-C9D3-4852-BD6E-053DA3E6423F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20220107_HotelCleaning", "20220107_HotelCleaning\20220107_HotelCleaning.csproj", "{69D388C0-3F1B-4208-BE3C-FD7B04462F80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{04B151C1-C9D3-4852-BD6E-053DA3E6423F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04B151C1-C9D3-4852-BD6E-053DA3E6423F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04B151C1-C9D3-4852-BD6E-053DA3E6423F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69D388C0-3F1B-4208-BE3C-FD7B04462F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D388C0-3F1B-4208-BE3C-FD7B04462F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D388C0-3F1B-4208-BE3C-FD7B04462F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D388C0-3F1B-4208-BE3C-FD7B04462F80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

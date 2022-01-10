@@ -10,6 +10,8 @@ namespace _20220105_SEB_HomeWork.Services
 {
     public class CurrencyService
     {
+        private const string LB_URL = "http://www.lb.lt/webservices/ExchangeRates/ExchangeRates.asmx/getExchangeRatesByDate?Date=";
+
         public List<CurrencyModel> GetDataByDate(DateTime date)
         {
             DateTime lastDay = date.AddDays(-1);
@@ -18,7 +20,7 @@ namespace _20220105_SEB_HomeWork.Services
 
             foreach (var item in list)
             {
-                var itemBefore = listBefore.Where(a => a.Currency == item.Currency).FirstOrDefault();
+                var itemBefore = listBefore.FirstOrDefault(a => a.Currency == item.Currency);
                 if (itemBefore != null)
                 {
                     item.LastRate = itemBefore.Rate;
@@ -35,7 +37,7 @@ namespace _20220105_SEB_HomeWork.Services
         {
             List<CurrencyModel> currencyModels = new List<CurrencyModel>();
 
-            XElement xelement = XElement.Load("http://www.lb.lt/webservices/ExchangeRates/ExchangeRates.asmx/getExchangeRatesByDate?Date=" + date.ToShortDateString());
+            XElement xelement = XElement.Load(LB_URL + date.ToShortDateString());
             IEnumerable<XElement> exchangeRates = xelement.Elements();
 
             foreach (var item in exchangeRates)
