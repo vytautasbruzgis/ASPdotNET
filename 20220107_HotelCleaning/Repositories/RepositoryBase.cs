@@ -27,5 +27,15 @@ namespace _20220107_HotelCleaning.Repositories
         {
             return _dbSet.Where(x => x.IsDeleted == false).ToList();
         }
+
+        public void Add(T item)
+        {
+            item.IsDeleted = false;
+            item.LastModified = System.DateTime.Now;
+            item.Created = System.DateTime.Now;
+
+            _dbSet.Add(item);
+            _dataContext.SaveChanges();
+        }
     }
 }

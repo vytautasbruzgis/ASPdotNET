@@ -6,5 +6,21 @@
 
 @using (Html.BeginForm("Create", "Room", @*new { Id = @Model.Registration.Id }*@ null, FormMethod.Post, null, new {Id = "RoomCreateForm" }))
 {
-    @Html.DropDownListFor(a => a.HotelId, new SelectList(@Model.Hotels, "Id", "Name"), "", new { @class = "form-control"})        
+    @Html.LabelFor(a => a.HotelId, "Hotel", null)
+    @Html.DropDownListFor(a => a.HotelId, new SelectList(@Model.Hotels, "Id", "Name"), null, new { @class = "form-control"})
+
+    @Html.LabelFor(a => a.FloorNumber, "Floor number", null)
+    @Html.DropDownListFor(a => a.FloorNumber, new SelectList(@Model.Floors), "... choose floor ...", new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.FloorNumber)
+
+    @Html.LabelFor(a => a.Name, "Room name", null)
+    @Html.TextBoxFor(a => a.Name, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.Name)
+
+    @Html.LabelFor(a => a.RoomNumber, "Room number", null)
+    @Html.TextBoxFor(a => a.RoomNumber, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.RoomNumber)
+
+    <input type="button" value="Cancel" class="btn btn-secondary"/>
+    <input type="submit" value="Submit" class="btn btn-success"/>
 }

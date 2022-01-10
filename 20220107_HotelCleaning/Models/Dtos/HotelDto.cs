@@ -14,6 +14,7 @@ namespace _20220107_HotelCleaning.Models.Dtos
         public int HotelId { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
+        public bool CanCreateRooms { get; set; }
         public List<Room> Rooms { get; set; }
     }
     public class HotelDtoMapper
@@ -35,7 +36,9 @@ namespace _20220107_HotelCleaning.Models.Dtos
                 HotelId = hotel.Id,
                 Name = hotel.Name,
                 City = hotel.City.Name,
-                Rooms = hotel.Rooms
+                Rooms = hotel.Rooms,
+                CanCreateRooms = hotel.RoomsInHotel > hotel.Rooms.Count ? true : false 
+
             };
         }
         

@@ -6,6 +6,7 @@
 
 <table class="table">
 <thead>
+    <th scope="col">Floor</th>
     <th scope="col">RoomNumber</th>
     <th scope="col">Name</th>
     <th scope="col">Has to be cleaned</th>
@@ -16,6 +17,7 @@
             @foreach(var room in @Model.Rooms)
             {
                 <tr scope="row">
+                    <td scope="col">@room.FloorNumber</td>
                     <td scope="col">@room.RoomNumber</td>
                     <td scope="col">@room.Name</td>
                     <td scope="col">@room.IsCleaned ? "Yes" : "No" </td>
@@ -30,4 +32,6 @@
 }
 </table>
 <br />
-@Html.ActionLink("Add new room", "Create", "Room", new { hotelId = @Model.HotelId }, null)
+@if (@Model.CanCreateRooms) {
+    @Html.ActionLink("Add new room", "Create", "Room", new { hotelId = @Model.HotelId }, null)    
+}

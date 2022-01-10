@@ -15,7 +15,7 @@ namespace _20220107_HotelCleaning.Repositories
 
         public List<Hotel> GetAllIncluded()
         {
-            return _dbSet.Include(x => x.City).ToList();
+            return _dbSet.Include(x => x.City).Include(y => y.Rooms).ToList();
         }
 
         public Hotel GetIncluded(int id)
