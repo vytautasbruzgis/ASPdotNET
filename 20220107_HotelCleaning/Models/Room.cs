@@ -12,6 +12,7 @@ namespace _20220107_HotelCleaning.Models
         public bool IsCheckedIn { get; set; }
         public bool IsCleaned { get; set; } = true;
         public List<HotelTask> Tasks { get; set; }
+        public List<Booking> Bookings { get; set; }
 
     }
 }

@@ -20,9 +20,10 @@
                     <td scope="col">@room.FloorNumber</td>
                     <td scope="col">@room.RoomNumber</td>
                     <td scope="col">@room.Name</td>
-                    <td scope="col">@room.IsCleaned ? "Yes" : "No" </td>
+                    <td scope="col">@(room.IsCleaned ? "Yes" : "No")</td>
                     <td>
                         @Html.ActionLink("Order cleaning", "Create", "Task", new { roomId = @room.Id }, null)
+                        @Html.ActionLink("Book room", "Book", "Room", new { roomId = @room.Id }, null)
                     </td>
                 </tr>
             }

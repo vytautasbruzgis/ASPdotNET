@@ -5,14 +5,6 @@ namespace _20220107_HotelCleaning.Models.Dtos
 {
     public class RoomCreateDto
     {
-        public RoomCreateDto(int maxFloor)
-        {
-            List<int> Floors = new List<int>();
-            for (int i = 0; i < maxFloor; i++)
-            {
-                Floors.Add(i + 1);
-            }
-        }
         [Required]
         public int HotelId { get; set; }
         

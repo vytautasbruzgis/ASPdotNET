@@ -18,10 +18,13 @@ namespace _20220107_HotelCleaning.Services
             var rooms = _roomRepo.GetRoomsByHotel(hotelId).ToList();
             return rooms;
         }
-
         public void Create(Room room)
         {
             _roomRepo.Add(room);
+        }
+        public Room Get(int id)
+        {
+           return _roomRepo.Get(id);
         }
     }
 }

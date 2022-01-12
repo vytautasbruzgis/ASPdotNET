@@ -1,0 +1,26 @@
+﻿@using _20220107_HotelCleaning.Models.Dtos
+@model BookRoomDto
+
+<H4>Book room number @Model.room.RoomNumber:</H4>
+
+@using (Html.BeginForm("Create", "Room", @*new { Id = @Model.Registration.Id }*@ null, FormMethod.Post, null, new {Id = "BookRoomForm" }))
+{
+    @Html.LabelFor(a => a.VisitorId, "Visitor", null)
+    @Html.DropDownListFor(a => a.VisitorId, new SelectList(@Model.Visitors, "Id", "FullName"), "... choose or fill form ...", new { @class = "form-control"})
+
+    @*@Html.LabelFor(a => a.FloorNumber, "Floor number", null)
+    @Html.DropDownListFor(a => a.FloorNumber, new SelectList(@Model.Floors), "... choose floor ...", new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.FloorNumber)
+
+    @Html.LabelFor(a => a.Name, "Room name", null)
+    @Html.TextBoxFor(a => a.Name, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.Name)
+
+    @Html.LabelFor(a => a.RoomNumber, "Room number", null)
+    @Html.TextBoxFor(a => a.RoomNumber, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.RoomNumber)*@
+
+    <br />
+    <input type="button" value="Cancel" class="btn btn-secondary"/>
+    <input type="submit" value="Submit" class="btn btn-success"/>
+}

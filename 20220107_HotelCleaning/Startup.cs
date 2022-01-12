@@ -32,9 +32,15 @@ namespace _20220107_HotelCleaning
             
             services.AddTransient<HotelRepository>();
             services.AddTransient<RoomRepository>();
+            services.AddTransient<PersonRepository>();
+            services.AddTransient<VisitorRepository>();
+            services.AddTransient<BookingRepository>();
             
             services.AddTransient<HotelService>();
             services.AddTransient<RoomService>();
+            services.AddTransient<PersonService>();
+            services.AddTransient<VisitorService>();
+            services.AddTransient<BookingService>();
             
             services.AddControllersWithViews();
         }

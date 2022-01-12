@@ -22,6 +22,7 @@ namespace _20220107_HotelCleaning.Data
             modelBuilder.Entity<Visitor>().HasKey(x => new { x.Id });
             modelBuilder.Entity<Person>().HasKey(x => new { x.Id });
             modelBuilder.Entity<TaskType>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<Booking>().HasKey(x => new { x.Id });
 
             modelBuilder.Entity<Person>().HasOne(x => x.City);
             modelBuilder.Entity<Worker>().HasOne(x => x.Person);
@@ -35,6 +36,9 @@ namespace _20220107_HotelCleaning.Data
             modelBuilder.Entity<HotelTask>().HasOne(x => x.Room).WithMany(x => x.Tasks);
             modelBuilder.Entity<HotelTask>().HasOne(x => x.Worker).WithMany(x => x.Tasks);
             modelBuilder.Entity<HotelTask>().HasOne(x => x.TaskType);
+
+            modelBuilder.Entity<Booking>().HasOne(x => x.Room).WithMany(x => x.Bookings);
+            modelBuilder.Entity<Booking>().HasOne(x => x.Visitor).WithMany(x => x.Bookings);
 
             modelBuilder.Entity<TaskType>().HasData(
                 new TaskType()
