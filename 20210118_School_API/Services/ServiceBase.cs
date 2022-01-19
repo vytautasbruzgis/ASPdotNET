@@ -44,5 +44,9 @@ namespace _20210118_School_API.Services
         {
             _repo.Delete(item);
         }
+        public void Update(T item)
+        {
+            _repo.Update(item);
+        }
     }
 }

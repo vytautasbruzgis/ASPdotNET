@@ -62,9 +62,19 @@ namespace _20210118_School_API.Controllers
                 response.ErrorCode = e.Message;
                 response.ErrorMessage = response.GetErrorText(response.ErrorCode);
             }
-            
             return response;
-
+        }
+        [HttpPut("{id}")]
+        public SchoolRequestResponse Update(int id, SchoolDto schoolDto)
+        {
+            SchoolRequestResponse response = new SchoolRequestResponse();
+            var school = _schoolService.Get(id);
+            if (school != null)
+            {
+                school = _mapper.Map(schoolDto, school);
+                _schoolService.Update(school);
+            }
+            return response;
         }
 
     }
