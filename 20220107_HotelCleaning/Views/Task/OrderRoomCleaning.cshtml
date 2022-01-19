@@ -1,0 +1,21 @@
+﻿@using _20220107_HotelCleaning.Models.Dtos
+@model HotelTaskDto 
+
+<H4>Order room cleaning</H4>
+
+@using (Html.BeginForm("OrderRoomCleaning", "Task", null, FormMethod.Post, null, new {Id = "OrderRoomCleaningForm" }))
+{
+    @Html.HiddenFor(a => a.RoomId);
+    @Html.HiddenFor(a => a.HotelId);
+    @Html.HiddenFor(a => a.TaskTypeId);
+
+    @Html.LabelFor(a => a.WorkerId, "Available workers", null)
+    @Html.DropDownListFor(a => a.WorkerId, new SelectList(@Model.Workers, "Id", "FullName"), null, new { @class = "form-control"})
+
+    @Html.LabelFor(a => a.CompleteUntil, "Task has to completed", null)
+    @Html.TextBoxFor(a => a.CompleteUntil, new { @class = "form-control", @type = "date", @max = "2023-01-01"})
+    @Html.ValidationMessageFor(a => a.CompleteUntil)
+
+    <input type="button" value="Cancel" class="btn btn-secondary"/>
+    <input type="submit" value="Submit" class="btn btn-success"/>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _20220107_HotelCleaning.Models
 {
@@ -13,6 +14,9 @@ namespace _20220107_HotelCleaning.Models
         public bool IsCleaned { get; set; } = true;
         public List<HotelTask> Tasks { get; set; }
         public List<Booking> Bookings { get; set; }
-
+        [NotMapped]
+        public bool CanBeBooked { get; set; }
+        [NotMapped]
+        public bool IsCleaningOrdered { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace _20220107_HotelCleaning.Models.Dtos
 {
@@ -16,6 +17,9 @@ namespace _20220107_HotelCleaning.Models.Dtos
         public string City { get; set; }
         public bool CanCreateRooms { get; set; }
         public List<Room> Rooms { get; set; }
+        public List<Room> BookedRooms { get; set; }
+        public List<Room> AvailableRooms { get; set; }
+
     }
     public class HotelDtoMapper
     {
@@ -37,6 +41,8 @@ namespace _20220107_HotelCleaning.Models.Dtos
                 Name = hotel.Name,
                 City = hotel.City.Name,
                 Rooms = hotel.Rooms,
+                BookedRooms = hotel.Rooms.Where(x => x.CanBeBooked == false).ToList(),
+                AvailableRooms = hotel.Rooms.Where(x => x.CanBeBooked == true).ToList(),
                 CanCreateRooms = hotel.RoomsInHotel > hotel.Rooms.Count ? true : false 
 
             };

@@ -3,7 +3,10 @@
 
 <h3>Hotel "@Model.Name", @Model.City</h3>
 <br />
+<br />
 
+
+<h4>Rooms available for booking</h4>
 <table class="table">
 <thead>
     <th scope="col">Floor</th>
@@ -12,19 +15,33 @@
     <th scope="col">Has to be cleaned</th>
     <th scope="col">Actions</th>
 </thead>
-@if (@Model.Rooms.Any())
+@if (@Model.AvailableRooms.Any())
 {
-            @foreach(var room in @Model.Rooms)
+            @foreach(var room in @Model.AvailableRooms)
             {
                 <tr scope="row">
                     <td scope="col">@room.FloorNumber</td>
                     <td scope="col">@room.RoomNumber</td>
                     <td scope="col">@room.Name</td>
-                    <td scope="col">@(room.IsCleaned ? "Yes" : "No")</td>
+                    <td scope="col">@(room.IsCleaned ? "No" : "Yes")</td>
                     <td>
-                        @Html.ActionLink("Order cleaning", "Create", "Task", new { roomId = @room.Id }, null)
+                    @if (@room.CanBeBooked){
                         @Html.ActionLink("Book room", "Book", "Room", new { roomId = @room.Id }, null)
-                    </td>
+                    } else if (room.IsCheckedIn)
+                    {
+                        @Html.ActionLink("Check out", "Checkout", "Room", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                    else if (@room.IsCleaned)
+                    {
+                        @Html.ActionLink("Check in", "Checkin", "Room", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                    else if (@room.IsCleaningOrdered == false) {
+                        @Html.ActionLink("Order cleaning", "OrderRoomCleaning", "Task", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                    else if (@room.IsCleaningOrdered == true) {
+                        @Html.ActionLink("Room is cleaned", "TaskFinished", "Task", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                </td>
                 </tr>
             }
         
@@ -33,6 +50,52 @@
 }
 </table>
 <br />
+
+<h4>Rooms booked right now</h4>
+<br />
+<table class="table">
+<thead>
+    <th scope="col">Floor</th>
+    <th scope="col">RoomNumber</th>
+    <th scope="col">Name</th>
+    <th scope="col">Has to be cleaned</th>
+    <th scope="col">Actions</th>
+</thead>
+
+@if (@Model.BookedRooms.Any())
+{
+            @foreach(var room in @Model.BookedRooms)
+            {
+                <tr scope="row">
+                    <td scope="col">@room.FloorNumber</td>
+                    <td scope="col">@room.RoomNumber</td>
+                    <td scope="col">@room.Name</td>
+                    <td scope="col">@(room.IsCleaned ? "No" : "Yes")</td>
+                    <td>
+                    @if (@room.CanBeBooked){
+                        @Html.ActionLink("Book room", "Book", "Room", new { roomId = @room.Id }, null)
+                    } else if (room.IsCheckedIn)
+                    {
+                        @Html.ActionLink("Check out", "Checkout", "Room", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                    else if (@room.IsCleaned)
+                    {
+                        @Html.ActionLink("Check in", "Checkin", "Room", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                    else if (@room.IsCleaningOrdered == false) {
+                        @Html.ActionLink("Order cleaning", "OrderRoomCleaning", "Task", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                    else if (@room.IsCleaningOrdered == true) {
+                        @Html.ActionLink("Room is cleaned", "TaskFinished", "Task", new { roomId = @room.Id, hotelId = @room.HotelId }, null)
+                    }
+                </td>
+                </tr>
+            }
+        
+} else {
+        <tr scope="row"><td scope="col" colspan="4">Room list is empty</td></tr>
+}
+
 @if (@Model.CanCreateRooms) {
     @Html.ActionLink("Add new room", "Create", "Room", new { hotelId = @Model.HotelId }, null)    
 }

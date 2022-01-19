@@ -11,5 +11,10 @@ namespace _20220107_HotelCleaning.Repositories
         {
 
         }
+        public List<Booking> GetByRoom(int roomId)
+        {
+            /* reikėtų turbūt IQueryable metodą pasidaryti GetAllNotDeleted */
+            return _dbSet.Where(x => x.RoomId == roomId && x.IsDeleted == false && x.IsCheckedOut == true || (x.IsCheckedOut == false && x.IsCheckedIn == false)).ToList();
+        }
     }
 }

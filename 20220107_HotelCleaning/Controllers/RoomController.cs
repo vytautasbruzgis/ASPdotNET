@@ -14,9 +14,10 @@ namespace _20220107_HotelCleaning.Controllers
         private VisitorService _visitorService;
         private PersonService _personService;
         private BookingService _bookingService;
+        private CityService _cityService;
         public RoomController(
             HotelService hotelService, RoomService roomService, VisitorService visitorService, PersonService personService,
-            BookingService bookingService
+            BookingService bookingService, CityService cityService
             )
         {
             _hotelService = hotelService;
@@ -24,6 +25,7 @@ namespace _20220107_HotelCleaning.Controllers
             _visitorService = visitorService;
             _personService = personService;
             _bookingService = bookingService;
+            _cityService = cityService;
         }
         public IActionResult Create(int? hotelId)
         {
@@ -73,32 +75,43 @@ namespace _20220107_HotelCleaning.Controllers
             {
                 roomBooking.Visitor = null;
             }
+            roomBooking.Citys = _cityService.GetAllNotDeleted();
             roomBooking.Visitors = _visitorService.GetAllNotDeletedIncluded();
             return View(roomBooking);
         }
         [HttpPost]
         public IActionResult Book(BookRoomDto roomBooking)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(roomBooking);
-            }
-
             Visitor roomVisitor = new Visitor();
-            roomVisitor.Person = new Person()
-            {
-                FirstName = "Vytautas",
-                LastName = "Bruzgis",
-                CityId = 1
-            };
-            _personService.Create(roomVisitor.Person);
-            _visitorService.Create(roomVisitor);
             Booking booking = new Booking();
-            booking.VisitorId = roomVisitor.Id;
-            //booking.RoomId = roomId;
+            if (roomBooking.VisitorId == 0)
+            {
+                roomVisitor.Person = new Person()
+                {
+                    FirstName = roomBooking.Visitor.Person.FirstName,
+                    LastName =  roomBooking.Visitor.Person.LastName,
+                    CityId = roomBooking.Visitor.Person.CityId
+                };
+                _personService.Create(roomVisitor.Person);    
+                _visitorService.Create(roomVisitor);
+            }
+            
+            booking.VisitorId = roomBooking.VisitorId == 0? roomVisitor.Id : roomBooking.VisitorId;
+            booking.RoomId = roomBooking.RoomId;
             booking.Date = DateTime.Now.AddDays(1);
             _bookingService.Create(booking);
-            return RedirectToAction("Details", "Hotel", new {Id = 1 /*hotelId*/ });
+            var room = _roomService.Get(roomBooking.RoomId);
+            return RedirectToAction("Details", "Hotel", new {Id = room.HotelId });
+        }
+        public IActionResult Checkin (int roomId, int hotelId)
+        {
+            _roomService.CheckIn(roomId);
+            return RedirectToAction("Details", "Hotel", new { Id =  hotelId });
+        }
+        public IActionResult Checkout(int roomId, int hotelId)
+        {
+            _roomService.CheckOut(roomId);
+            return RedirectToAction("Details", "Hotel", new { Id = hotelId });
         }
     }
 }

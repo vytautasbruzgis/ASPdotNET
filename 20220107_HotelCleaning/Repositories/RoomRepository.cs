@@ -1,5 +1,6 @@
 ﻿using _20220107_HotelCleaning.Data;
 using _20220107_HotelCleaning.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,7 +14,7 @@ namespace _20220107_HotelCleaning.Repositories
         }
         public List<Room> GetRoomsByHotel(int hotelId)
         {
-            return GetAllNotDeleted().Where(x => x.HotelId == hotelId).ToList();
+            return _dbSet.Where(x => x.HotelId == hotelId && x.IsDeleted == false).Include(x => x.Bookings).Include(y => y.Tasks).ToList();
         }
     }
 }

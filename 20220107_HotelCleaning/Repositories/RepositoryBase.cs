@@ -27,7 +27,6 @@ namespace _20220107_HotelCleaning.Repositories
         {
             return _dbSet.Where(x => x.IsDeleted == false).ToList();
         }
-
         public void Add(T item)
         {
             item.IsDeleted = false;
@@ -36,6 +35,21 @@ namespace _20220107_HotelCleaning.Repositories
 
             _dbSet.Add(item);
             _dataContext.SaveChanges();
+        }
+        public void Update(T item)
+        {
+            item.LastModified = System.DateTime.Now;
+            _dbSet.Update(item);
+            _dataContext.SaveChanges();
+        }
+        public void Delete(int id)
+        {
+            var item = _dbSet.FirstOrDefault(x=> x.Id == id);
+            if(item != null)
+            {
+                item.IsDeleted=true;
+            }
+            Update(item);
         }
     }
 }

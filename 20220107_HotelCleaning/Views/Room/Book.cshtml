@@ -3,22 +3,29 @@
 
 <H4>Book room number @Model.room.RoomNumber:</H4>
 
-@using (Html.BeginForm("Create", "Room", @*new { Id = @Model.Registration.Id }*@ null, FormMethod.Post, null, new {Id = "BookRoomForm" }))
+@using (Html.BeginForm("Book", "Room", @*new { Id = @Model.Registration.Id }*@ null, FormMethod.Post, null, new {Id = "BookRoomForm" }))
 {
+    @Html.HiddenFor(a => a.RoomId)
+
+    @Html.LabelFor(a => a.Date, "Booking date", null)
+    @Html.TextBoxFor(a => a.Date, new { @class = "form-control", @type = "date", @max = "2023-01-01"})
+    @Html.ValidationMessageFor(a => a.Date)
+
     @Html.LabelFor(a => a.VisitorId, "Visitor", null)
     @Html.DropDownListFor(a => a.VisitorId, new SelectList(@Model.Visitors, "Id", "FullName"), "... choose or fill form ...", new { @class = "form-control"})
 
-    @*@Html.LabelFor(a => a.FloorNumber, "Floor number", null)
-    @Html.DropDownListFor(a => a.FloorNumber, new SelectList(@Model.Floors), "... choose floor ...", new { @class = "form-control"})
-    @Html.ValidationMessageFor(a => a.FloorNumber)
+    @Html.LabelFor(a => a.Visitor.Person.FirstName, "First name", null)
+    @Html.TextBoxFor(a => a.Visitor.Person.FirstName, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.Visitor.Person.FirstName)
 
-    @Html.LabelFor(a => a.Name, "Room name", null)
-    @Html.TextBoxFor(a => a.Name, new { @class = "form-control"})
-    @Html.ValidationMessageFor(a => a.Name)
+    @Html.LabelFor(a => a.Visitor.Person.LastName, "Last name", null)
+    @Html.TextBoxFor(a => a.Visitor.Person.LastName, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.Visitor.Person.LastName)
 
-    @Html.LabelFor(a => a.RoomNumber, "Room number", null)
-    @Html.TextBoxFor(a => a.RoomNumber, new { @class = "form-control"})
-    @Html.ValidationMessageFor(a => a.RoomNumber)*@
+    @Html.LabelFor(a => a.VisitorId, "Visitor residency city", null)
+    @Html.DropDownListFor(a => a.Visitor.Person.CityId, new SelectList(@Model.Citys, "Id", "Name"), "... choose ...", new { @class = "form-control"})
+    
+
 
     <br />
     <input type="button" value="Cancel" class="btn btn-secondary"/>

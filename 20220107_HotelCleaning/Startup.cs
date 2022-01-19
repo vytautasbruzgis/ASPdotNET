@@ -1,4 +1,5 @@
 using _20220107_HotelCleaning.Data;
+using _20220107_HotelCleaning.Models.Automapper;
 using _20220107_HotelCleaning.Repositories;
 using _20220107_HotelCleaning.Services;
 using Microsoft.AspNetCore.Builder;
@@ -29,18 +30,31 @@ namespace _20220107_HotelCleaning
         {
             var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(x => x.UseSqlServer(defaultConnection));
-            
+
+            services.AddAutoMapper(typeof(HotelTaskProfile));
+            services.AddAutoMapper(typeof(HotelTaskProfile_2));
+
             services.AddTransient<HotelRepository>();
             services.AddTransient<RoomRepository>();
             services.AddTransient<PersonRepository>();
             services.AddTransient<VisitorRepository>();
             services.AddTransient<BookingRepository>();
+            services.AddTransient<CityRepository>();
+            services.AddTransient<WorkerRepository>();
+            services.AddTransient<JobTypeRepository>();
+            services.AddTransient<TaskTypeRepository>();
+            services.AddTransient<TaskRepository>();
             
             services.AddTransient<HotelService>();
             services.AddTransient<RoomService>();
             services.AddTransient<PersonService>();
             services.AddTransient<VisitorService>();
             services.AddTransient<BookingService>();
+            services.AddTransient<CityService>();
+            services.AddTransient<WorkerService>();
+            services.AddTransient<JobTypeService>();
+            services.AddTransient<TaskTypeService>();
+            services.AddTransient<TaskService>();
             
             services.AddControllersWithViews();
         }

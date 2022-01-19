@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _20220107_HotelCleaning.Migrations
 {
-    public partial class Initial : Migration
+    public partial class minor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,6 +64,7 @@ namespace _20220107_HotelCleaning.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CityId = table.Column<int>(type: "int", nullable: false),
                     FloorsCount = table.Column<int>(type: "int", nullable: false),
+                    RoomsInHotel = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -101,7 +102,7 @@ namespace _20220107_HotelCleaning.Migrations
                         column: x => x.CityId,
                         principalTable: "City",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -160,8 +161,7 @@ namespace _20220107_HotelCleaning.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PersonId = table.Column<int>(type: "int", nullable: false),
-                    JobTypeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JobTypeId1 = table.Column<int>(type: "int", nullable: true),
+                    JobTypeId = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -170,8 +170,8 @@ namespace _20220107_HotelCleaning.Migrations
                 {
                     table.PrimaryKey("PK_Worker", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Worker_JobType_JobTypeId1",
-                        column: x => x.JobTypeId1,
+                        name: "FK_Worker_JobType_JobTypeId",
+                        column: x => x.JobTypeId,
                         principalTable: "JobType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -179,6 +179,39 @@ namespace _20220107_HotelCleaning.Migrations
                         name: "FK_Worker_Person_PersonId",
                         column: x => x.PersonId,
                         principalTable: "Person",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Booking",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    VisitorId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsCheckedIn = table.Column<bool>(type: "bit", nullable: false),
+                    IsCheckedOut = table.Column<bool>(type: "bit", nullable: false),
+                    CheckedOut = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Booking", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Booking_Room_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Room",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Booking_Visitor_VisitorId",
+                        column: x => x.VisitorId,
+                        principalTable: "Visitor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -226,9 +259,9 @@ namespace _20220107_HotelCleaning.Migrations
                 columns: new[] { "Id", "Created", "IsDeleted", "LastModified", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Vilnius" },
-                    { 2, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Kaunas" },
-                    { 3, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Klaipėda" }
+                    { 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Vilnius" },
+                    { 2, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Kaunas" },
+                    { 3, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Klaipėda" }
                 });
 
             migrationBuilder.InsertData(
@@ -236,9 +269,9 @@ namespace _20220107_HotelCleaning.Migrations
                 columns: new[] { "Id", "Created", "IsDeleted", "LastModified", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Kambarių valytojas" },
-                    { 2, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Restorano darbuotojas" },
-                    { 3, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Administratorius" }
+                    { 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Kambarių valytojas" },
+                    { 2, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Restorano darbuotojas" },
+                    { 3, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Administratorius" }
                 });
 
             migrationBuilder.InsertData(
@@ -246,18 +279,18 @@ namespace _20220107_HotelCleaning.Migrations
                 columns: new[] { "Id", "Created", "IsDeleted", "LastModified", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Išvalyti kambarį" },
-                    { 2, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Papildyti minibarą" }
+                    { 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Išvalyti kambarį" },
+                    { 2, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Papildyti minibarą" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Hotel",
-                columns: new[] { "Id", "Address", "CityId", "Created", "FloorsCount", "IsDeleted", "LastModified", "Name" },
+                columns: new[] { "Id", "Address", "CityId", "Created", "FloorsCount", "IsDeleted", "LastModified", "Name", "RoomsInHotel" },
                 values: new object[,]
                 {
-                    { 1, "Konstitucijos pr. 5", 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), 21, false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Radison SAS" },
-                    { 2, "Šaligatvio g. 5", 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), 16, false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Lietuva" },
-                    { 3, "Kauno g. 5", 2, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), 5, false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Daugirdas" }
+                    { 1, "Konstitucijos pr. 5", 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), 21, false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Radison SAS", 0 },
+                    { 2, "Šaligatvio g. 5", 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), 16, false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Lietuva", 0 },
+                    { 3, "Kauno g. 5", 2, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), 5, false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Daugirdas", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -265,19 +298,29 @@ namespace _20220107_HotelCleaning.Migrations
                 columns: new[] { "Id", "CityId", "Created", "FirstName", "IsDeleted", "LastModified", "LastName" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Vytautas", false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Bruzgis" },
-                    { 2, 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Anelė", false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Čirūnaitė" }
+                    { 1, 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Vytautas", false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Bruzgis" },
+                    { 2, 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Anelė", false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Čirūnaitė" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Room",
                 columns: new[] { "Id", "Created", "FloorNumber", "HotelId", "IsCheckedIn", "IsCleaned", "IsDeleted", "LastModified", "Name", "RoomNumber" },
-                values: new object[] { 1, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, false, false, false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Karališkasis", 101 });
+                values: new object[] { 1, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, false, true, false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Karališkasis", 101 });
 
             migrationBuilder.InsertData(
                 table: "Room",
                 columns: new[] { "Id", "Created", "FloorNumber", "HotelId", "IsCheckedIn", "IsCleaned", "IsDeleted", "LastModified", "Name", "RoomNumber" },
-                values: new object[] { 2, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, false, false, false, new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Local), "Medaus puodynė", 102 });
+                values: new object[] { 2, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, false, true, false, new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local), "Medaus puodynė", 102 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Booking_RoomId",
+                table: "Booking",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Booking_VisitorId",
+                table: "Booking",
+                column: "VisitorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Hotel_CityId",
@@ -315,9 +358,9 @@ namespace _20220107_HotelCleaning.Migrations
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Worker_JobTypeId1",
+                name: "IX_Worker_JobTypeId",
                 table: "Worker",
-                column: "JobTypeId1");
+                column: "JobTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Worker_PersonId",
@@ -327,6 +370,9 @@ namespace _20220107_HotelCleaning.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Booking");
+
             migrationBuilder.DropTable(
                 name: "HotelTask");
 

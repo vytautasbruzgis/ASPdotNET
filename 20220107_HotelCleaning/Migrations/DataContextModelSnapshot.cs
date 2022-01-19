@@ -89,25 +89,25 @@ namespace _20220107_HotelCleaning.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Vilnius"
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Kaunas"
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Klaipėda"
                         });
                 });
@@ -155,10 +155,10 @@ namespace _20220107_HotelCleaning.Migrations
                             Id = 1,
                             Address = "Konstitucijos pr. 5",
                             CityId = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FloorsCount = 21,
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Radison SAS",
                             RoomsInHotel = 0
                         },
@@ -167,10 +167,10 @@ namespace _20220107_HotelCleaning.Migrations
                             Id = 2,
                             Address = "Šaligatvio g. 5",
                             CityId = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FloorsCount = 16,
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Lietuva",
                             RoomsInHotel = 0
                         },
@@ -179,10 +179,10 @@ namespace _20220107_HotelCleaning.Migrations
                             Id = 3,
                             Address = "Kauno g. 5",
                             CityId = 2,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FloorsCount = 5,
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Daugirdas",
                             RoomsInHotel = 0
                         });
@@ -257,25 +257,25 @@ namespace _20220107_HotelCleaning.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Kambarių valytojas"
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Restorano darbuotojas"
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Administratorius"
                         });
                 });
@@ -316,20 +316,20 @@ namespace _20220107_HotelCleaning.Migrations
                         {
                             Id = 1,
                             CityId = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FirstName = "Vytautas",
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             LastName = "Bruzgis"
                         },
                         new
                         {
                             Id = 2,
                             CityId = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FirstName = "Anelė",
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             LastName = "Čirūnaitė"
                         });
                 });
@@ -378,26 +378,26 @@ namespace _20220107_HotelCleaning.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FloorNumber = 1,
                             HotelId = 1,
                             IsCheckedIn = false,
                             IsCleaned = true,
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Karališkasis",
                             RoomNumber = 101
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             FloorNumber = 1,
                             HotelId = 1,
                             IsCheckedIn = false,
                             IsCleaned = true,
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Medaus puodynė",
                             RoomNumber = 102
                         });
@@ -430,17 +430,17 @@ namespace _20220107_HotelCleaning.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Išvalyti kambarį"
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Created = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDeleted = false,
-                            LastModified = new DateTime(2022, 1, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            LastModified = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "Papildyti minibarą"
                         });
                 });
@@ -484,10 +484,7 @@ namespace _20220107_HotelCleaning.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("JobTypeId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("JobTypeId1")
+                    b.Property<int>("JobTypeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastModified")
@@ -498,7 +495,7 @@ namespace _20220107_HotelCleaning.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobTypeId1");
+                    b.HasIndex("JobTypeId");
 
                     b.HasIndex("PersonId");
 
@@ -599,7 +596,9 @@ namespace _20220107_HotelCleaning.Migrations
                 {
                     b.HasOne("_20220107_HotelCleaning.Models.JobType", "JobType")
                         .WithMany()
-                        .HasForeignKey("JobTypeId1");
+                        .HasForeignKey("JobTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("_20220107_HotelCleaning.Models.Person", "Person")
                         .WithMany()

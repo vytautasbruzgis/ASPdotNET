@@ -1,0 +1,24 @@
+﻿@using _20220107_HotelCleaning.Models.Dtos
+@model WorkerDto
+
+<H4>Create new worker</H4>
+
+@using (Html.BeginForm("Create", "Worker", null, FormMethod.Post, null, new {Id = "WorkerCreateForm" }))
+{
+    @Html.LabelFor(a => a.FirstName, "First name", null)
+    @Html.TextBoxFor(a => a.FirstName, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.FirstName)
+
+    @Html.LabelFor(a => a.LastName, "Last name", null)
+    @Html.TextBoxFor(a => a.LastName, new { @class = "form-control"})
+    @Html.ValidationMessageFor(a => a.LastName)
+
+    @Html.LabelFor(a => a.CityId, "Worker residency city", null)
+    @Html.DropDownListFor(a => a.CityId, new SelectList(@Model.Cities, "Id", "Name"), "... choose ...", new { @class = "form-control"})
+
+    @Html.LabelFor(a => a.JobTypeId, "Worker main job type", null)
+    @Html.DropDownListFor(a => a.JobTypeId, new SelectList(@Model.JobTypes, "Id", "Name"), "... choose ...", new { @class = "form-control"})
+
+    <input type="button" value="Cancel" class="btn btn-secondary"/>
+    <input type="submit" value="Submit" class="btn btn-success"/>
+}
