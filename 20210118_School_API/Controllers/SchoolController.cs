@@ -3,11 +3,8 @@ using _20210118_School_API.Models;
 using _20210118_School_API.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace _20210118_School_API.Controllers
 {
@@ -15,13 +12,10 @@ namespace _20210118_School_API.Controllers
     [Route("[controller]")]
     public class SchoolController : ControllerBase
     {
-        private readonly ILogger<SchoolController> _logger;
         private readonly IMapper _mapper;
         private readonly SchoolService _schoolService;
-
-        public SchoolController(ILogger<SchoolController> logger, IMapper mapper, SchoolService schoolService)
+        public SchoolController(IMapper mapper, SchoolService schoolService)
         {
-            _logger = logger;
             _mapper = mapper;
             _schoolService = schoolService;
         }

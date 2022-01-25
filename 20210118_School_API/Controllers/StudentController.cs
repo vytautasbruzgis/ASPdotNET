@@ -46,13 +46,51 @@ namespace _20210118_School_API.Controllers
         public IActionResult Create(StudentDto studentDto)
         {
             Student student = _mapper.Map<Student>(studentDto);
-            School school = _schoolService.Get(student.SchoolId);
-            if (school == null)
+            
+            if (IsSchoolValid(studentDto.SchoolId) == false)
             {
                 return BadRequest();
             } 
             _studentService.Create(student);
-            return Ok();
+            return Ok("Student created succesfully");
+        }
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        //public bool IsGenderValid(int schoolId)
+        //{
+        //    School school = _schoolService.Get(schoolId);
+        //    if (school == null) return false;
+        //    return true;
+        //}
+        public bool IsSchoolValid(int schoolId)
+        {
+            School school = _schoolService.Get(schoolId);
+            if (school == null) return false;
+            return true;
+        }
+        public IActionResult Delete(int id)
+        {
+            _studentService.Delete(id);
+            return Ok("Student deleted succesfully");
+        }
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, StudentDto studentDto)
+        {
+            if (IsSchoolValid(studentDto.SchoolId) == false)
+            {
+                return BadRequest("There is no such school");
+            }
+            Student student = _studentService.Get(id);
+            if (student == null)
+            {
+                return BadRequest("There is no such student");
+            }
+            var mappedStudent = _mapper.Map<Student>(studentDto);
+            mappedStudent.Id = id;
+            _studentService.Update(mappedStudent);
+            return Ok("Student updated");
         }
     }
 }
