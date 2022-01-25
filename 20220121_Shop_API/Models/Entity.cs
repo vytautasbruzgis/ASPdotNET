@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace _20210121_Shop_API.Models
 {
@@ -12,6 +13,7 @@ namespace _20210121_Shop_API.Models
     }
     public class NamedEntity : Entity
     {
+        [MinLength(4)]
         public string Name { get; set; }
     }
 }

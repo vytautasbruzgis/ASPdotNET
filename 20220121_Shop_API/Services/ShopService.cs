@@ -2,7 +2,9 @@
 using _20220121_Shop_API.Dtos;
 using _20220121_Shop_API.Models;
 using _20220121_Shop_API.Repositories;
+using _20220121_Shop_API.Validators;
 using AutoMapper;
+using FluentValidation;
 using System;
 
 namespace _20220121_Shop_API.Services
@@ -28,6 +30,8 @@ namespace _20220121_Shop_API.Services
                 {
                     Name = shopCreateDto.Name
                 };
+                ShopValidator validator = new ShopValidator();
+                validator.ValidateAndThrow(shopDto);
                 return base.Create(shopDto);
             } else
             {
