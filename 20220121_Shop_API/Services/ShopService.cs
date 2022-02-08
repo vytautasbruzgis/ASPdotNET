@@ -6,6 +6,7 @@ using _20220121_Shop_API.Validators;
 using AutoMapper;
 using FluentValidation;
 using System;
+using System.Threading.Tasks;
 
 namespace _20220121_Shop_API.Services
 {
@@ -22,7 +23,7 @@ namespace _20220121_Shop_API.Services
             return shopDto;   
         }
 
-        public int Create(ShopCreateDto shopCreateDto)
+        public async Task<int> CreateAsync(ShopCreateDto shopCreateDto)
         {
             if (IsNameUnique(shopCreateDto.Name))
             {
@@ -32,7 +33,7 @@ namespace _20220121_Shop_API.Services
                 };
                 ShopValidator validator = new ShopValidator();
                 validator.ValidateAndThrow(shopDto);
-                return base.Create(shopDto);
+                return await base.CreateAsync(shopDto);
             } else
             {
                 throw new ArgumentException("Shop name is not unique");

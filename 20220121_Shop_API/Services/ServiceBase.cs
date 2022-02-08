@@ -5,6 +5,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace _20210118_School_API.Services
 {
@@ -21,9 +22,9 @@ namespace _20210118_School_API.Services
             _repo = repository;
             _mapper = mapper;
         }
-        public D Get(int id)
+        public async Task<D> GetAsync(int id)
         {
-            T item = _repo.Get(id);
+            T item = await _repo.GetAsync(id);
             if (item == null)
             {
                 throw new ArgumentException($"Item with id = {id} does not exist");
@@ -42,12 +43,12 @@ namespace _20210118_School_API.Services
             List<D> mappedList = _mapper.Map<List<D>>(list);
             return mappedList;
         }
-        public int Create(D itemDto)
+        public async Task<int> CreateAsync(D itemDto)
         {
             try
             {
                 T item = _mapper.Map<T>(itemDto);
-                _repo.Add(item);
+                await _repo.AddAsync(item);
                 return item.Id;
             } 
             catch (Exception ex)
@@ -56,9 +57,9 @@ namespace _20210118_School_API.Services
             }
             
         }
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var item = _repo.Get(id);
+            var item = await _repo.GetAsync(id);
             if (item == null)
             {
                 throw new ArgumentException("1");
@@ -67,15 +68,15 @@ namespace _20210118_School_API.Services
             {
                 throw new ArgumentException("2");
             }
-            _repo.Delete(id);
+            await _repo.DeleteAsync(id);
         }
-        public void Delete(T item)
+        public async Task DeleteAsync(T item)
         {
-            _repo.Delete(item);
+            await _repo.DeleteAsync(item);
         }
-        public void Update(T item)
+        public async Task Update(T item)
         {
-            _repo.Update(item);
+            await _repo.Update(item);
         }
     }
     public abstract class ServiceNamedBase<T, E, D> : ServiceBase <T, E, D>

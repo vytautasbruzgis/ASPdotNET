@@ -7,6 +7,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace _20220121_Shop_API.Services
 {
@@ -19,17 +20,17 @@ namespace _20220121_Shop_API.Services
             _itemService = itemService;
             _shopService = shopService;
         }
-        new public int Create(ShopItemDto dto)
+        new public async Task<int> CreateAsync(ShopItemDto dto)
         {
             try
             {
-                ItemDto item = _itemService.Get(dto.ItemId);
-                ShopDto shop = _shopService.Get(dto.ShopId);
+                ItemDto item = await _itemService.GetAsync(dto.ItemId);
+                ShopDto shop = await _shopService.GetAsync(dto.ShopId);
                 if (dto.Price == 0)
                 {
                     throw new ZeroPriceException("Price must not be zero");
                 }
-                return base.Create(dto);
+                return await base.CreateAsync(dto);
             } catch (ArgumentException ex)
             {
                 throw new ArgumentException(ex.Message);

@@ -3,6 +3,7 @@ using _20220121_Shop_API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace _20220121_Shop_API.Controllers
 {
@@ -18,10 +19,10 @@ namespace _20220121_Shop_API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             ShopDto shopDto = new ShopDto();
-            shopDto = _shopService.Get(id);
+            shopDto = await _shopService.GetAsync(id);
             return Ok(shopDto);
         }
 
@@ -34,11 +35,11 @@ namespace _20220121_Shop_API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ShopCreateDto shopDto)
+        public async Task<IActionResult> Create(ShopCreateDto shopDto)
         {
             try
             {
-                int newItemId = _shopService.Create(shopDto);
+                int newItemId = await _shopService.CreateAsync(shopDto);
                 return Created("", newItemId);
             } 
             catch (ArgumentException ex)

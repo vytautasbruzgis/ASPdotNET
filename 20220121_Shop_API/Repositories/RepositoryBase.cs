@@ -3,6 +3,7 @@ using _20220118_School_API.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace _20210118_School_API.Repositories
 {
@@ -15,9 +16,9 @@ namespace _20210118_School_API.Repositories
             _dataContext = dataContext;
             _dbSet = _dataContext.Set<T>();
         }
-        public T Get(int id)
+        public async Task<T> GetAsync(int id)
         {
-            return _dbSet.FirstOrDefault(x => x.Id == id);
+            return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
         public List<T> GetAll()
         {
@@ -27,33 +28,33 @@ namespace _20210118_School_API.Repositories
         {
             return _dbSet.Where(x => x.IsDeleted == false).ToList();
         }
-        public void Add(T item)
+        public async Task AddAsync(T item)
         {
             item.IsDeleted = false;
             item.LastModified = System.DateTime.Now;
             item.Created = System.DateTime.Now;
 
             _dbSet.Add(item);
-            _dataContext.SaveChanges();
+            await _dataContext.SaveChangesAsync();
         }
-        public void Update(T item)
+        public async Task Update(T item)
         {
             item.LastModified = System.DateTime.Now;
             _dbSet.Update(item);
-            _dataContext.SaveChanges();
+            await _dataContext.SaveChangesAsync();
         }
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            var item = _dbSet.FirstOrDefault(x=> x.Id == id);
+            var item = await _dbSet.FirstOrDefaultAsync(x=> x.Id == id);
             if(item != null)
             {
-                Delete(item);
+               await DeleteAsync(item);
             }
         }
-        public void Delete(T item)
+        public async Task DeleteAsync(T item)
         {
             item.IsDeleted = true;
-            Update(item);
+            await Update(item);
         }
     }
     public abstract class NamedRepositoryBase<T> : RepositoryBase<T>
