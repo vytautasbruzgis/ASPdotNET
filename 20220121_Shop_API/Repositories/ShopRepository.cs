@@ -1,6 +1,4 @@
-﻿using _20210118_School_API.Repositories;
-using _20220118_School_API.Data;
-using _20220121_Shop_API.Dtos;
+﻿using _20220121_Shop_API.Data;
 using _20220121_Shop_API.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

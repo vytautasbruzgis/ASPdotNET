@@ -1,7 +1,7 @@
-using _20220118_Shop_API.AutoMapper;
-using _20220121_Shop_API.Data;
-using _20220121_Shop_API.Repositories;
-using _20220121_Shop_API.Services;
+using _20220209_School_API.AutoMapper;
+using _20220209_School_API.Data;
+using _20220209_School_API.Repositories;
+using _20220209_School_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220121_Shop_API
+namespace _20220209_School_API
 {
     public class Startup
     {
@@ -35,23 +35,18 @@ namespace _20220121_Shop_API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "_20220121_Shop_API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "_20220209_School_API", Version = "v1" });
             });
-
             var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(x => x.UseSqlServer(defaultConnection));
-            
-            services.AddTransient<ShopRepository>();
-            services.AddTransient<ItemRepository>();
-            services.AddTransient<ShopItemRepository>();
 
-            services.AddTransient<ShopService>();
-            services.AddTransient<ItemService>();
-            services.AddTransient<ShopItemService>();
+            services.AddTransient<SchoolRepository>();
+            services.AddTransient<SchoolService>();
+            services.AddTransient<StudentRepository>();
+            services.AddTransient<StudentService>();
 
             services.AddCors();
-
-            services.AddAutoMapper(typeof(ShopProfile));
+            services.AddAutoMapper(typeof(SchoolProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +61,7 @@ namespace _20220121_Shop_API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_20220121_Shop_API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_20220209_School_API v1"));
             }
 
             app.UseHttpsRedirection();

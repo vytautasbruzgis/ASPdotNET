@@ -1,6 +1,4 @@
-﻿using _20210121_Shop_API.Models;
-
-namespace _20220121_Shop_API.Models
+﻿namespace _20220121_Shop_API.Models
 {
     public class ShopItem : Entity
     {

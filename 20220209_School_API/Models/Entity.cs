@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace _20220121_Shop_API.Models
+namespace _20220209_School_API.Models
 {
     public class Entity
     {
@@ -13,7 +13,6 @@ namespace _20220121_Shop_API.Models
     }
     public class NamedEntity : Entity
     {
-        [MinLength(4)]
         public string Name { get; set; }
     }
 }

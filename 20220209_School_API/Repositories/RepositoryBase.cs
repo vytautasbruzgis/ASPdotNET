@@ -1,11 +1,11 @@
-﻿using _20220121_Shop_API.Data;
-using _20220121_Shop_API.Models;
+﻿using _20220209_School_API.Models;
+using _20220209_School_API.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220121_Shop_API.Repositories
+namespace _20220209_School_API.Repositories
 {
     public abstract class RepositoryBase<T> where T : Entity
     {
@@ -20,13 +20,13 @@ namespace _20220121_Shop_API.Repositories
         {
             return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
-        public List<T> GetAll()
+        public async Task<List<T>> GetAllAsync()
         {
-            return _dbSet.ToList(); 
+            return await _dbSet.ToListAsync(); 
         }
-        public List<T> GetAllNotDeleted()
+        public async Task<List<T>> GetAllNotDeletedAsync()
         {
-            return _dbSet.Where(x => x.IsDeleted == false).ToList();
+            return await _dbSet.Where(x => x.IsDeleted == false).ToListAsync();
         }
         public async Task AddAsync(T item)
         {

@@ -1,5 +1,4 @@
-﻿using _20210121_Shop_API.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace _20220121_Shop_API.Models
 {

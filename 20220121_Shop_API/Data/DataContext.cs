@@ -1,7 +1,7 @@
 ﻿using _20220121_Shop_API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace _20220118_School_API.Data
+namespace _20220121_Shop_API.Data
 {
     public class DataContext : DbContext
     {

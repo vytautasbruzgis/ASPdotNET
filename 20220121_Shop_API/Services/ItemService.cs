@@ -1,5 +1,4 @@
-﻿using _20210118_School_API.Services;
-using _20220121_Shop_API.Dtos;
+﻿using _20220121_Shop_API.Dtos;
 using _20220121_Shop_API.Models;
 using _20220121_Shop_API.Repositories;
 using AutoMapper;

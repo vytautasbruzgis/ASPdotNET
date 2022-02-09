@@ -1,13 +1,13 @@
-﻿using _20220121_Shop_API.Dtos;
-using _20220121_Shop_API.Models;
-using _20220121_Shop_API.Repositories;
+﻿using _20220209_School_API.Models;
+using _20220209_School_API.Repositories;
+using _20220209_School_API.Dtos;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220121_Shop_API.Services
+namespace _20220209_School_API.Services
 {
     public abstract class ServiceBase<T, E, D> 
         where T : Entity
@@ -33,23 +33,19 @@ namespace _20220121_Shop_API.Services
             return mappedItem; 
         }
 
-        public List<D> GetAll()
+        public async Task<List<D>> GetAllAsync()
         {
-            List<T> list = _repo.GetAllNotDeleted();
-            if (list == null)
-            {
-                throw new ArgumentException("There is no items in list");
-            }
+            List<T> list = await _repo.GetAllNotDeletedAsync();
             List<D> mappedList = _mapper.Map<List<D>>(list);
             return mappedList;
         }
-        public async Task<int> CreateAsync(D itemDto)
+        public async Task<D> CreateAsync(D itemDto)
         {
             try
             {
                 T item = _mapper.Map<T>(itemDto);
                 await _repo.AddAsync(item);
-                return item.Id;
+                return _mapper.Map<D>(item);
             } 
             catch (Exception ex)
             {
