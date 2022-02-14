@@ -53,16 +53,16 @@ namespace _20220209_School_API.Services
             }
             
         }
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var item = await _repo.GetAsync(id);
             if (item == null)
             {
-                throw new ArgumentException("1");
+                throw new ArgumentException($"There is no item with id {id}");
             }
             if (item.IsDeleted == true)
             {
-                throw new ArgumentException("2");
+                throw new ArgumentException($"Item with id {id} is already deleted");
             }
             await _repo.DeleteAsync(id);
         }

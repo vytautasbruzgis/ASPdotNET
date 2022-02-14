@@ -67,7 +67,7 @@ namespace _20220209_School_API.Repositories
         public List<T> GetByName(string itemName)
         {
             List<T> list = new List<T>();
-            list = _dbSet.Where(x => x.Name == itemName).ToList();
+            list = _dbSet.Where(x => x.Name == itemName && x.IsDeleted == false).ToList();
             return list;
         }
     }

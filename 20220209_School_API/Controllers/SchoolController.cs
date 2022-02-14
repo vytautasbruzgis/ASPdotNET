@@ -31,7 +31,6 @@ namespace _20220209_School_API.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
         [HttpPost]
         public async Task<IActionResult> Create(SchoolCreateDto schoolCreateDto)
@@ -47,7 +46,18 @@ namespace _20220209_School_API.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _schoolService.DeleteAsync(id);
+                return NoContent();
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
