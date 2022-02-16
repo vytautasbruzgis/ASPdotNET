@@ -1,13 +1,13 @@
-﻿using _20220209_School_API.Models;
-using _20220209_School_API.Repositories;
-using _20220209_School_API.Dtos;
+﻿using _20220216_DevBridge_Points_API.Dtos;
+using _20220216_DevBridge_Points_API.Models;
+using _20220216_DevBridge_Points_API.Repositories;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220209_School_API.Services
+namespace _20220216_DevBridge_Points_API.Services
 {
     public abstract class ServiceBase<T, E, D> 
         where T : Entity
