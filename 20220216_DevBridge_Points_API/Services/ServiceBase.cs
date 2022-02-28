@@ -46,12 +46,12 @@ namespace _20220216_DevBridge_Points_API.Services
                 T item = _mapper.Map<T>(itemDto);
                 await _repo.AddAsync(item);
                 return _mapper.Map<D>(item);
-            } 
+            }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.Message);
             }
-            
+
         }
         public async Task DeleteAsync(int id)
         {

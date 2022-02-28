@@ -19,6 +19,21 @@ namespace _20220216_DevBridge_Points_API.Migrations
                 .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("PointSquare", b =>
+                {
+                    b.Property<int>("PointsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SquaresId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PointsId", "SquaresId");
+
+                    b.HasIndex("SquaresId");
+
+                    b.ToTable("PointSquare");
+                });
+
             modelBuilder.Entity("_20220216_DevBridge_Points_API.Models.Point", b =>
                 {
                     b.Property<int>("Id")
@@ -35,10 +50,7 @@ namespace _20220216_DevBridge_Points_API.Migrations
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PointListId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SquareId")
+                    b.Property<int?>("PointListId")
                         .HasColumnType("int");
 
                     b.Property<int>("X_Coordinate")
@@ -50,8 +62,6 @@ namespace _20220216_DevBridge_Points_API.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PointListId");
-
-                    b.HasIndex("SquareId");
 
                     b.ToTable("Point");
                 });
@@ -106,17 +116,26 @@ namespace _20220216_DevBridge_Points_API.Migrations
                     b.ToTable("Square");
                 });
 
-            modelBuilder.Entity("_20220216_DevBridge_Points_API.Models.Point", b =>
+            modelBuilder.Entity("PointSquare", b =>
                 {
-                    b.HasOne("_20220216_DevBridge_Points_API.Models.PointList", "PointList")
-                        .WithMany("Points")
-                        .HasForeignKey("PointListId")
+                    b.HasOne("_20220216_DevBridge_Points_API.Models.Point", null)
+                        .WithMany()
+                        .HasForeignKey("PointsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("_20220216_DevBridge_Points_API.Models.Square", null)
+                        .WithMany()
+                        .HasForeignKey("SquaresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("_20220216_DevBridge_Points_API.Models.Point", b =>
+                {
+                    b.HasOne("_20220216_DevBridge_Points_API.Models.PointList", "PointList")
                         .WithMany("Points")
-                        .HasForeignKey("SquareId");
+                        .HasForeignKey("PointListId");
 
                     b.Navigation("PointList");
                 });
@@ -137,11 +156,6 @@ namespace _20220216_DevBridge_Points_API.Migrations
                     b.Navigation("Points");
 
                     b.Navigation("Squares");
-                });
-
-            modelBuilder.Entity("_20220216_DevBridge_Points_API.Models.Square", b =>
-                {
-                    b.Navigation("Points");
                 });
 #pragma warning restore 612, 618
         }

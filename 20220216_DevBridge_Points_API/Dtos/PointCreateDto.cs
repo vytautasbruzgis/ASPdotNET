@@ -2,5 +2,8 @@
 {
     public class PointCreateDto
     {
+        public int X_Coordinate { get; set; }
+        public int Y_Coordinate { get; set; }
+        public int? PointListId { get; set; }
     }
 }

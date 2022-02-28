@@ -1,10 +1,8 @@
-using _20220216_DevBridge_Points_API.AutoMapper;
-using _20220216_DevBridge_Points_API.Data;
-using _20220216_DevBridge_Points_API.Repositories;
-using _20220216_DevBridge_Points_API.Services;
+using _20220224_DanskeCredit_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _20220216_DevBridge_Points_API
+namespace _20220224_DanskeCredit_API
 {
     public class Startup
     {
@@ -33,20 +31,12 @@ namespace _20220216_DevBridge_Points_API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "_20220216_DevBridge_Points_API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "_20220224_DanskeCredit_API", Version = "v1" });
             });
-            var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<DataContext>(x => x.UseSqlServer(defaultConnection));
 
-            services.AddTransient<PointRepository>();
-            services.AddTransient<PointListRepository>();
-            services.AddTransient<SquareRepository>();
-            services.AddTransient<PointService>();
-            services.AddTransient<PointListService>();
-
+            services.AddTransient<LoanRequestService>();
 
             services.AddCors();
-            services.AddAutoMapper(typeof(PointsProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +51,7 @@ namespace _20220216_DevBridge_Points_API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_20220216_DevBridge_Points_API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_20220224_DanskeCredit_API v1"));
             }
 
             app.UseHttpsRedirection();

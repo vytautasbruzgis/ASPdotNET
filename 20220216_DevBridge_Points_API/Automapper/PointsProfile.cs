@@ -10,6 +10,8 @@ namespace _20220216_DevBridge_Points_API.AutoMapper
         {
             CreateMap<Point, PointDto>().ReverseMap();
             CreateMap<PointCreateDto, PointDto>().ReverseMap();
+            CreateMap<PointListCreateDto, PointListDto>().ReverseMap(); 
+            CreateMap<PointList, PointListDto>().ReverseMap();
             //CreateMap<Student, StudentDto>()
             //    .ForMember(dest => dest.FullName, act => act.MapFrom(src => src.FullName))
             //    .ReverseMap();
